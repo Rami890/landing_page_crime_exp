@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מרכז המחקר והמידע של הכנסת - מצב המידע</title>
+    <title>מרכז המחקר והמידע של הכנסת - סיכומי מסמכים</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <style>
         * {
@@ -118,111 +118,146 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        .section-container {
+        .section-title {
+            color: #0038b8;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .bottom-line {
+            background: #fff3cd;
+            border-right: 4px solid #ffc107;
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+        }
+        
+        .bottom-line-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .bottom-line-text {
+            color: #856404;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+        
+        .key-findings {
             background: white;
             border-radius: 8px;
-            padding: 30px;
+            padding: 25px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.08);
             margin-bottom: 25px;
         }
         
-        .section-title {
+        .findings-title {
             color: #0038b8;
-            font-size: 22px;
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #e5e5e5;
-        }
-        
-        .key-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .stat-box {
-            background: #f8f9fa;
-            padding: 20px;
-            border-right: 4px solid #0038b8;
-            border-radius: 4px;
-        }
-        
-        .stat-value {
-            font-size: 28px;
+            font-size: 18px;
+            margin-bottom: 15px;
             font-weight: bold;
+        }
+        
+        .finding-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #e5e5e5;
+            font-size: 15px;
+        }
+        
+        .finding-item:last-child {
+            border-bottom: none;
+        }
+        
+        .finding-bullet {
             color: #0038b8;
-            margin-bottom: 5px;
-        }
-        
-        .stat-label {
-            color: #666;
-            font-size: 14px;
-        }
-        
-        .trend {
-            display: inline-block;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-size: 12px;
-            margin-right: 5px;
-        }
-        
-        .trend-up {
-            background: #d4edda;
-            color: #155724;
-        }
-        
-        .trend-down {
-            background: #f8d7da;
-            color: #721c24;
+            font-weight: bold;
+            margin-left: 8px;
         }
         
         .chart-container {
             background: white;
-            padding: 20px;
-            border: 1px solid #e5e5e5;
-            border-radius: 4px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
             margin: 30px 0;
-            height: 400px;
+            height: 450px;
             position: relative;
         }
         
-        .summary-box {
-            background: #f0f5ff;
-            border-right: 4px solid #0038b8;
-            padding: 20px;
-            border-radius: 4px;
-            margin: 25px 0;
+        .chart-title {
+            color: #333;
+            font-size: 16px;
+            margin-bottom: 20px;
+            text-align: center;
         }
         
-        .summary-title {
+        .interactive-note {
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        .documents-section {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            margin-top: 30px;
+        }
+        
+        .documents-title {
+            color: #0038b8;
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .document-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            border-right: 4px solid #0038b8;
+            transition: transform 0.3s;
+        }
+        
+        .document-card:hover {
+            transform: translateX(-5px);
+            background: #f0f5ff;
+        }
+        
+        .doc-title {
             font-weight: bold;
             color: #0038b8;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        
+        .doc-meta {
+            color: #666;
+            font-size: 13px;
             margin-bottom: 10px;
         }
         
-        .summary-text {
+        .doc-description {
             color: #555;
             font-size: 14px;
             line-height: 1.6;
-        }
-        
-        .document-links {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #e5e5e5;
         }
         
         .doc-link {
             display: inline-block;
             background: #0038b8;
             color: white;
-            padding: 10px 20px;
+            padding: 8px 16px;
             text-decoration: none;
             border-radius: 4px;
-            margin: 5px;
-            font-size: 14px;
+            margin-top: 10px;
+            font-size: 13px;
             transition: background 0.3s;
         }
         
@@ -230,28 +265,31 @@
             background: #002d8f;
         }
         
-        .info-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
         }
         
-        .info-table th {
+        .insight-box {
             background: #f0f5ff;
-            color: #0038b8;
-            padding: 12px;
-            text-align: right;
+            padding: 20px;
+            border-radius: 4px;
+            border-right: 3px solid #0038b8;
+        }
+        
+        .insight-title {
             font-weight: bold;
-            border-bottom: 2px solid #0038b8;
+            color: #0038b8;
+            margin-bottom: 10px;
+            font-size: 15px;
         }
         
-        .info-table td {
-            padding: 10px;
-            border-bottom: 1px solid #e5e5e5;
-        }
-        
-        .info-table tr:hover {
-            background: #f8f9fa;
+        .insight-text {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
         }
         
         .footer {
@@ -266,6 +304,27 @@
             color: #b8d1ff;
             text-decoration: none;
         }
+        
+        .chart-legend {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 13px;
+        }
+        
+        .legend-color {
+            width: 15px;
+            height: 15px;
+            border-radius: 3px;
+        }
     </style>
 </head>
 <body>
@@ -275,7 +334,7 @@
                 <div class="logo">ממ"מ</div>
                 <div>
                     <h1>מרכז המחקר והמידע של הכנסת</h1>
-                    <div class="header-subtitle">www.knesset.gov.il/mmm</div>
+                    <div class="header-subtitle">סיכומי מסמכים ותובנות מרכזיות | www.knesset.gov.il/mmm</div>
                 </div>
             </div>
         </div>
@@ -298,456 +357,414 @@
         <div class="container">
             <!-- כוח אדם במשטרה -->
             <section id="police" class="section active">
-                <div class="section-container">
-                    <h2 class="section-title">כוח אדם במשטרה - נתונים עדכניים ל-16.12.2024</h2>
+                <h2 class="section-title">כוח אדם במשטרה</h2>
+                
+                <div class="bottom-line">
+                    <div class="bottom-line-title">📌 שורה תחתונה</div>
+                    <div class="bottom-line-text">
+                        מצבת כוח האדם במשטרה גדלה ב-5% ב-2024, כאשר שיעור איוש תקני הסיירים עומד על 84%. העלייה המשמעותית ביותר נרשמה בקרב שוטרי חובה ושירות לאומי (29%), בעוד שוטרי הקבע גדלו ב-4%. מחוז תל אביב רשם עלייה של 96% בגיוסים, ומחוזות הצפון והדרום ממשיכים להתמודד עם אתגרי איוש.
+                    </div>
+                </div>
+
+                <div class="key-findings">
+                    <div class="findings-title">תובנות מרכזיות מהמסמכים</div>
+                    <div class="finding-item">
+                        <span class="finding-bullet">◈</span> גידול האוכלוסייה בעשור האחרון: 29%, גידול במצבת השוטרים: 23%
+                    </div>
+                    <div class="finding-item">
+                        <span class="finding-bullet">◈</span> שיעור איוש תקני הסיור ירד מ-92% ב-2010 ל-84% ב-2024
+                    </div>
+                    <div class="finding-item">
+                        <span class="finding-bullet">◈</span> יחס שוטרים לאוכלוסייה: מחוז מרכז - 1.16 לאלף, מחוז צפון - 2.5 לאלף
+                    </div>
+                    <div class="finding-item">
+                        <span class="finding-bullet">◈</span> שיעור שוטרי החובה במצבה עלה מ-14% ל-17% בשנים האחרונות
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-title">מגמות בכוח אדם במשטרה - עשור של נתונים</div>
+                    <canvas id="policeChart"></canvas>
+                    <div class="interactive-note">*הזז את העכבר מעל הגרף לקבלת נתונים מפורטים</div>
+                </div>
+
+                <div class="documents-section">
+                    <div class="documents-title">📚 מסמכי הממ"מ בנושא</div>
                     
-                    <div class="key-stats">
-                        <div class="stat-box">
-                            <div class="stat-value">23,732</div>
-                            <div class="stat-label">שוטרי קבע <span class="trend trend-up">↑4%</span></div>
+                    <div class="document-card">
+                        <div class="doc-title">נתונים על כוח האדם במשטרה</div>
+                        <div class="doc-meta">כתיבה: ד"ר תהילה שחר | 21 בינואר 2025</div>
+                        <div class="doc-description">
+                            מסמך מקיף המציג נתונים עדכניים על מצבת השוטרים, גיוסים וסיום שירות בפילוח לפי מחוזות, דרגות ומגזרים. המסמך חושף פערים משמעותיים בין תקן למצבה ומצביע על קשיים בגיוס ושימור כוח אדם.
                         </div>
-                        <div class="stat-box">
-                            <div class="stat-value">1,096</div>
-                            <div class="stat-label">שוטרי חובה <span class="trend trend-up">↑8%</span></div>
-                        </div>
-                        <div class="stat-box">
-                            <div class="stat-value">2,285</div>
-                            <div class="stat-label">גיוסים ב-2024</div>
-                        </div>
-                        <div class="stat-box">
-                            <div class="stat-value">532</div>
-                            <div class="stat-label">שירות לאומי <span class="trend trend-up">↑29%</span></div>
-                        </div>
+                        <a href="#" class="doc-link">📄 קרא את המסמך המלא</a>
                     </div>
 
-                    <div class="chart-container">
-                        <canvas id="policeChart"></canvas>
-                    </div>
-
-                    <table class="info-table">
-                        <thead>
-                            <tr>
-                                <th>מחוז</th>
-                                <th>מצבת שוטרים</th>
-                                <th>שינוי מ-2023</th>
-                                <th>גיוסים ב-2024</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>דרומי</strong></td>
-                                <td>3,093</td>
-                                <td><span class="trend trend-up">↑9%</span></td>
-                                <td>446</td>
-                            </tr>
-                            <tr>
-                                <td><strong>תל אביב</strong></td>
-                                <td>2,696</td>
-                                <td><span class="trend trend-up">↑3%</span></td>
-                                <td>312 <span class="trend trend-up">↑96%</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>מרכז</strong></td>
-                                <td>2,686</td>
-                                <td><span class="trend trend-up">↑4%</span></td>
-                                <td>301</td>
-                            </tr>
-                            <tr>
-                                <td><strong>חוף</strong></td>
-                                <td>2,577</td>
-                                <td><span class="trend trend-up">↑3%</span></td>
-                                <td>221</td>
-                            </tr>
-                            <tr>
-                                <td><strong>צפון</strong></td>
-                                <td>2,523</td>
-                                <td><span class="trend trend-up">↑1%</span></td>
-                                <td>157</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <div class="summary-box">
-                        <div class="summary-title">סיכום ומגמות</div>
-                        <div class="summary-text">
-                            • מצבת כוח האדם במשטרה גדלה ב-5% בשנת 2024<br>
-                            • המחוז הדרומי הוא הגדול ביותר עם 3,093 שוטרים<br>
-                            • עלייה חדה בגיוסים במחוז תל אביב - גידול של 96%<br>
-                            • 80% מהשוטרים בתפקידים ייעודיים (שטח וסיוע מבצעי)<br>
-                            • בעשור האחרון: גידול של 23% במצבת שוטרי הקבע
+                    <div class="document-card">
+                        <div class="doc-title">מבט על כוח האדם במשטרת ישראל 2013-2023</div>
+                        <div class="doc-meta">כתיבה: ד"ר תהילה שחר וד"ר נורית יכימוביץ כהן | 3 במרץ 2025</div>
+                        <div class="doc-description">
+                            ניתוח מגמות לאורך עשור המראה כי למרות גידול של 28% במצבת כוח האדם, הגידול אינו אחיד - משטרת הגבול גדלה ב-15% בלבד, ומחוז תל אביב גדל רק ב-5% למרות הצורך הגובר.
                         </div>
+                        <a href="#" class="doc-link">📄 קרא את המסמך המלא</a>
                     </div>
-
-                    <div class="document-links">
-                        <a href="#" class="doc-link">📄 מסמך מלא: נתונים על כוח האדם במשטרה</a>
-                        <a href="#" class="doc-link">📊 מבט על כוח האדם 2013-2023</a>
+                    
+                    <div class="document-card">
+                        <div class="doc-title">נתוני כוח אדם ביחידות האכיפה העירוניות ובתפקידי סיור במשטרה</div>
+                        <div class="doc-meta">כתיבה: מתן שחק | 6 בינואר 2025</div>
+                        <div class="doc-description">
+                            ניתוח מעמיק של מצבת הסיירים בתחנות המשטרה, החושף פערים משמעותיים באיוש: ירידה מ-92% ב-2010 ל-84% ב-2024. המסמך מציג את הבעיה החמורה בתפקידי השטח.
+                        </div>
+                        <a href="#" class="doc-link">📄 קרא את המסמך המלא</a>
                     </div>
                 </div>
             </section>
 
             <!-- פשיעה מדווחת -->
             <section id="crime" class="section">
-                <div class="section-container">
-                    <h2 class="section-title">פשיעה מדווחת בישראל 2020-2024</h2>
+                <h2 class="section-title">פשיעה מדווחת בישראל</h2>
+                
+                <div class="bottom-line">
+                    <div class="bottom-line-title">📌 שורה תחתונה</div>
+                    <div class="bottom-line-text">
+                        נתוני המשטרה מראים ירידה של 3% במספר התיקים ב-2024 לעומת 2023. לפי סקר הלמ"ס, שיעור הדיווח למשטרה עומד על 25.6% מנפגעי העבירות, ירידה מ-37% ב-2014. בעבירות מקוונות שיעור הדיווח עומד על 7.6%. באזור הנגב נרשמו 248 תיקים לאלף תושבים, לעומת 89 במרכז.
+                    </div>
+                </div>
+
+                <div class="key-findings">
+                    <div class="findings-title">תובנות מרכזיות מהמסמכים</div>
+                    <div class="finding-item">
+                        <span class="finding-bullet">◈</span> שיעור הדיווח למשטרה ירד מ-37% ב-2014 ל-25.6% ב-2023
+                    </div>
+                    <div class="finding-item">
+                        <span class="finding-bullet">◈</span> שיעורי פשיעה לאלף תושבים: הנגב - 248, המרכז - 89
+                    </div>
+                    <div class="finding-item">
+                        <span class="finding-bullet">◈</span> דיווח על עבירות מקוונות עומד על 7.6% בלבד
+                    </div>
+                    <div class="finding-item">
+                        <span class="finding-bullet">◈</span> עבירות סדר ציבורי מהוות את הקבוצה הגדולה ביותר
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-title">מגמות בפשיעה המדווחת 2020-2024 (באלפי תיקים)</div>
+                    <canvas id="crimeChart"></canvas>
+                    <div class="interactive-note">*לחץ על השנים בתרשים לקבלת פירוט לפי סוגי עבירות</div>
+                </div>
+
+                <div class="insights-grid">
+                    <div class="insight-box">
+                        <div class="insight-title">נתוני הדיווח למשטרה</div>
+                        <div class="insight-text">
+                            לפי סקר הלמ"ס, 74.4% מנפגעי העבירות לא דיווחו למשטרה ב-2023. הנתונים הרשמיים מייצגים אם כן כרבע מהאירועים.
+                        </div>
+                    </div>
+                    <div class="insight-box">
+                        <div class="insight-title">הבדלים גיאוגרפיים</div>
+                        <div class="insight-text">
+                            שיעורי הפשיעה לאלף תושבים נעים בין 89 במרכז ל-248 בנגב - יחס של 1:2.8 בין האזורים.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="documents-section">
+                    <div class="documents-title">📚 מסמכי הממ"מ בנושא</div>
                     
-                    <div class="key-stats">
-                        <div class="stat-box">
-                            <div class="stat-value">371,000</div>
-                            <div class="stat-label">תיקים ב-2024 <span class="trend trend-down">↓3%</span></div>
+                    <div class="document-card">
+                        <div class="doc-title">לקט נתונים על הפשיעה המדווחת בישראל 2020-2024</div>
+                        <div class="doc-meta">כתיבה: רמי שוורץ | עדכון: 15 בינואר 2025</div>
+                        <div class="doc-description">
+                            ניתוח מקיף של נתוני הפשיעה מ-2020 עד 2024, כולל פילוח לפי סוגי עבירות, אזורים גיאוגרפיים ומגמות לאורך זמן. המסמך חושף את הבעיה החמורה של תת-דיווח וירידת האמון במערכת.
                         </div>
-                        <div class="stat-box">
-                            <div class="stat-value">25.6%</div>
-                            <div class="stat-label">שיעור דיווח למשטרה (2023)</div>
-                        </div>
-                        <div class="stat-box">
-                            <div class="stat-value">117-248</div>
-                            <div class="stat-label">תיקים לכל 1,000 תושבים (הנגב)</div>
-                        </div>
-                        <div class="stat-box">
-                            <div class="stat-value">7.6%</div>
-                            <div class="stat-label">דיווח על עבירות מקוונות</div>
-                        </div>
+                        <a href="#" class="doc-link">📄 קרא את המסמך המלא</a>
                     </div>
-
-                    <div class="chart-container">
-                        <canvas id="crimeChart"></canvas>
-                    </div>
-
-                    <table class="info-table">
-                        <thead>
-                            <tr>
-                                <th>סוג עבירה</th>
-                                <th>תיאור</th>
-                                <th>דוגמאות</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>סדר ציבורי</strong></td>
-                                <td>העבירות הנפוצות ביותר</td>
-                                <td>איומים, תקיפת שוטר, קטטות, הפרעות</td>
-                            </tr>
-                            <tr>
-                                <td><strong>כלפי רכוש</strong></td>
-                                <td>קבוצה גדולה שנייה</td>
-                                <td>התפרצויות, גנבות רכב, הצתות, נזק בזדון</td>
-                            </tr>
-                            <tr>
-                                <td><strong>נגד גוף</strong></td>
-                                <td>עבירות אלימות</td>
-                                <td>חבלה גופנית, תקיפה</td>
-                            </tr>
-                            <tr>
-                                <td><strong>כלפי מוסר</strong></td>
-                                <td>סמים וזנות</td>
-                                <td>שימוש וסחר בסמים, סרסרות</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <div class="summary-box">
-                        <div class="summary-title">סיכום ומגמות</div>
-                        <div class="summary-text">
-                            • ירידה של 3% במספר התיקים ב-2024 לעומת 2023<br>
-                            • תת-דיווח משמעותי - רק רבע מהנפגעים מדווחים למשטרה<br>
-                            • הנגב מוביל בשיעור הפשיעה לנפש<br>
-                            • ירידה מתמשכת בשיעור הדיווח מאז 2014<br>
-                            • פער גדול בדיווח בין עבירות פיזיות (33%) למקוונות (7.6%)
+                    
+                    <div class="document-card">
+                        <div class="doc-title">שימוש במכת"זית ובגולל בואש: המצב בישראל ופסיקה מסווה - עדכון</div>
+                        <div class="doc-meta">כתיבה: ד"ר נורית יכימוביץ-כהן | 23 ביולי 2025</div>
+                        <div class="doc-description">
+                            סקירה על מכת"זית (מכונת"זית) ומגמות בפסיקה. המסמך מציג נתונים על שימוש בנשק חם וכלי יריה, ומנתח את המגמות בפשיעה הקשורה לנשק.
                         </div>
+                        <a href="#" class="doc-link">📄 קרא את המסמך המלא</a>
                     </div>
-
-                    <div class="document-links">
-                        <a href="#" class="doc-link">📄 לקט נתונים על הפשיעה המדווחת</a>
+                    
+                    <div class="document-card">
+                        <div class="doc-title">פשיעה ועבריינות של צעירים ערבים - נתוני אכיפה</div>
+                        <div class="doc-meta">כתיבה: ד"ר נורית יכימוביץ-כהן | 14 ביולי 2025</div>
+                        <div class="doc-description">
+                            נתונים על פשיעה בקרב צעירים ערבים בני 18-34, כולל השוואה לאוכלוסייה היהודית. המסמך מציג תמונת מצב של עבירות והבדלים בין קבוצות האוכלוסייה.
+                        </div>
+                        <a href="#" class="doc-link">📄 קרא את המסמך המלא</a>
                     </div>
                 </div>
             </section>
 
             <!-- אירועי רצח -->
             <section id="murder" class="section">
-                <div class="section-container">
-                    <h2 class="section-title">אירועי רצח בישראל 2021-2025</h2>
+                <h2 class="section-title">אירועי רצח בישראל</h2>
+                
+                <div class="bottom-line">
+                    <div class="bottom-line-title">📌 שורה תחתונה</div>
+                    <div class="bottom-line-text">
+                        בין 2021-2024 נרשמו 840 אירועי רצח עם 903 קורבנות. 75% מאירועי הרצח התרחשו בחברה הערבית, 19% בחברה היהודית ו-6% בקטגוריית "אחר". שיעור הפענוח: 65% באוכלוסייה היהודית לעומת 20% באוכלוסייה הערבית. שנת 2023 רשמה שיא של 274 אירועים, עם עלייה של 104% באירועי רצח בחברה הערבית (מ-103 ל-210).
+                    </div>
+                </div>
+
+                <div class="key-findings">
+                    <div class="findings-title">תובנות מרכזיות מהמסמכים</div>
+                    <div class="finding-item">
+                        <span class="finding-bullet">◈</span> 75% מאירועי הרצח ב-2021-2024 התרחשו בחברה הערבית
+                    </div>
+                    <div class="finding-item">
+                        <span class="finding-bullet">◈</span> פער של 45 נקודות אחוז בשיעורי פענוח: יהודים 65%, ערבים 20%
+                    </div>
+                    <div class="finding-item">
+                        <span class="finding-bullet">◈</span> 8 אירועי רצח לכל 100,000 תושבים ערבים לעומת 1 ליהודים
+                    </div>
+                    <div class="finding-item">
+                        <span class="finding-bullet">◈</span> מחוז מרכז: 16 אירועי רצח לכל 100,000 ערבים, מחוז חוף: 12
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-title">אירועי רצח לפי קבוצת אוכלוסייה 2021-2024</div>
+                    <canvas id="murderChart"></canvas>
+                    <div class="interactive-note">*הזז את העכבר מעל הגרף לקבלת נתונים מפורטים ושיעורי פענוח</div>
+                </div>
+
+                <div class="insights-grid">
+                    <div class="insight-box">
+                        <div class="insight-title">פערי פענוח</div>
+                        <div class="insight-text">
+                            שיעור הפענוח הכללי עומד על 32%. במחוז צפון: 78% פענוח ליהודים לעומת 12% לערבים.
+                        </div>
+                    </div>
+                    <div class="insight-box">
+                        <div class="insight-title">מגמות 2024</div>
+                        <div class="insight-text">
+                            מספר אירועי הרצח בחברה הערבית נשאר גבוה (206), בעוד שבחברה היהודית חזר לרמת 2021-2022 (38).
+                        </div>
+                    </div>
+                </div>
+
+                <div class="documents-section">
+                    <div class="documents-title">📚 מסמכי הממ"מ בנושא</div>
                     
-                    <div class="key-stats">
-                        <div class="stat-box">
-                            <div class="stat-value">840</div>
-                            <div class="stat-label">אירועי רצח (2021-2024)</div>
+                    <div class="document-card">
+                        <div class="doc-title">ניתוח נתונים על אירועי רצח בישראל מתחילת 2021 עד 10 במרץ 2025</div>
+                        <div class="doc-meta">כתיבה: רמי שוורץ | 11 במאי 2025</div>
+                        <div class="doc-description">
+                            ניתוח מקיף של 891 אירועי רצח עם 961 קורבנות, כולל פילוח מפורט לפי קבוצות אוכלוסייה, מחוזות ושיעורי פענוח. המסמך חושף את הפערים הדרמטיים: 8 רציחות לכל 100,000 ערבים לעומת 1 ליהודים, ושיעורי פענוח של 65% ליהודים לעומת 20% לערבים.
                         </div>
-                        <div class="stat-box">
-                            <div class="stat-value">903</div>
-                            <div class="stat-label">קורבנות רצח</div>
-                        </div>
-                        <div class="stat-box">
-                            <div class="stat-value">274</div>
-                            <div class="stat-label">אירועים ב-2023 (שיא)</div>
-                        </div>
-                        <div class="stat-box">
-                            <div class="stat-value">263</div>
-                            <div class="stat-label">אירועים ב-2024</div>
-                        </div>
+                        <a href="#" class="doc-link">📄 קרא את המסמך המלא</a>
                     </div>
-
-                    <div class="chart-container">
-                        <canvas id="murderChart"></canvas>
-                    </div>
-
-                    <table class="info-table">
-                        <thead>
-                            <tr>
-                                <th>מחוז</th>
-                                <th>אירועים (1-3/2025)</th>
-                                <th>אוכלוסייה יהודית</th>
-                                <th>אוכלוסייה ערבית</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>חוף</strong></td>
-                                <td>12</td>
-                                <td>1</td>
-                                <td>11</td>
-                            </tr>
-                            <tr>
-                                <td><strong>צפון</strong></td>
-                                <td>6</td>
-                                <td>1</td>
-                                <td>5</td>
-                            </tr>
-                            <tr>
-                                <td><strong>דרום</strong></td>
-                                <td>6</td>
-                                <td>2</td>
-                                <td>4</td>
-                            </tr>
-                            <tr>
-                                <td><strong>תל אביב</strong></td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>0</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <div class="summary-box">
-                        <div class="summary-title">סיכום ומגמות</div>
-                        <div class="summary-text">
-                            • 2023 הייתה שנת השיא עם 274 אירועי רצח<br>
-                            • ירידה קלה ב-2024 ל-263 אירועים<br>
-                            • ריבוי קורבנות באירועים מסוימים (903 קורבנות ב-840 אירועים)<br>
-                            • ריכוז גבוה של אירועים במחוז חוף<br>
-                            • פערים משמעותיים בין האוכלוסיות
+                    
+                    <div class="document-card">
+                        <div class="doc-title">נתונים על אירועי רצח, ינואר 2022 - ספטמבר 2024</div>
+                        <div class="doc-meta">כתיבה: עדו אבגר ואורלי אלמגור לוטן | אוקטובר 2024</div>
+                        <div class="doc-description">
+                            סקירת אירועי הרצח עם דגש על העלייה החדה ב-2023 והריכוז הגיאוגרפי במחוזות מסוימים. המסמך מציג את המגמות לאורך זמן ואת ההבדלים בין המחוזות השונים.
                         </div>
-                    </div>
-
-                    <div class="document-links">
-                        <a href="#" class="doc-link">📄 ניתוח נתונים על אירועי רצח</a>
+                        <a href="#" class="doc-link">📄 קרא את המסמך המלא</a>
                     </div>
                 </div>
             </section>
 
             <!-- שיטור עירוני -->
             <section id="urban" class="section">
-                <div class="section-container">
-                    <h2 class="section-title">שיטור עירוני - המודל החדש</h2>
+                <h2 class="section-title">שיטור עירוני - המודל החדש</h2>
+                
+                <div class="bottom-line">
+                    <div class="bottom-line-title">📌 שורה תחתונה</div>
+                    <div class="bottom-line-text">
+                        המודל החדש לשיטור עירוני צפוי להוסיף 470 תקני פקחים ולהפחית 320 תקני שוטרים. רשויות ערביות צפויות לגידול ממוצע של 214% בעלויות, כאשר באקה אל גרביה וטמרה צפויות לגידול של 438%. רשויות באשכולות חברתיים-כלכליים 1-3 צפויות לירידה של 31-43% בתקני השוטרים. 109 רשויות טרם הצטרפו לתוכנית.
+                    </div>
+                </div>
+
+                <div class="key-findings">
+                    <div class="findings-title">תובנות מרכזיות מהמסמכים</div>
+                    <div class="finding-item">
+                        <span class="finding-bullet">◈</span> רשויות באשכולות 1-3: ירידה צפויה של 31-43% בתקני שוטרים
+                    </div>
+                    <div class="finding-item">
+                        <span class="finding-bullet">◈</span> גידול ממוצע של 214% בעלויות לרשויות ערביות
+                    </div>
+                    <div class="finding-item">
+                        <span class="finding-bullet">◈</span> רשויות חלשות מאיישות כיום באופן חלקי את תקני הפקחים
+                    </div>
+                    <div class="finding-item">
+                        <span class="finding-bullet">◈</span> יחס פקח/שוטר במודל החדש: בין 1:1 ל-1:3 תלוי בפרמטרים
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-title">השפעת המודל החדש על רשויות לפי אשכול חברתי-כלכלי</div>
+                    <canvas id="urbanChart"></canvas>
+                    <div class="interactive-note">*לחץ על האשכולות לקבלת רשימת הרשויות והשינויים הצפויים</div>
+                </div>
+
+                <div class="insights-grid">
+                    <div class="insight-box">
+                        <div class="insight-title">שינוי במבנה הכוחות</div>
+                        <div class="insight-text">
+                            המודל החדש מעביר חלק מהאחריות לרשויות המקומיות, עם תוספת פקחים מקומיים והפחתת שוטרים.
+                        </div>
+                    </div>
+                    <div class="insight-box">
+                        <div class="insight-title">הבדלי יישום</div>
+                        <div class="insight-text">
+                            פקחים מקומיים וש��טרים בעלי סמכויות שונות - השינוי משפיע על סוג הטיפול בעבירות השונות.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="documents-section">
+                    <div class="documents-title">📚 מסמכי הממ"מ בנושא</div>
                     
-                    <div class="key-stats">
-                        <div class="stat-box">
-                            <div class="stat-value">+470</div>
-                            <div class="stat-label">תקני פקחים חדשים</div>
+                    <div class="document-card">
+                        <div class="doc-title">ניתוח השפעת המודל החדש על כוחות השיטור העירוני</div>
+                        <div class="doc-meta">כתיבה: מתן שחק | 22 ביוני 2025</div>
+                        <div class="doc-description">
+                            ניתוח מעמיק של אומדני מרכז השלטון המקומי להשפעת המודל החדש. המסמך חושף את הפגיעה הצפויה ברשויות החלשות והעלויות הכבדות שיוטלו על הרשויות הערביות.
                         </div>
-                        <div class="stat-box">
-                            <div class="stat-value">-320</div>
-                            <div class="stat-label">תקני שוטרים</div>
-                        </div>
-                        <div class="stat-box">
-                            <div class="stat-value">109</div>
-                            <div class="stat-label">רשויות שטרם הצטרפו</div>
-                        </div>
-                        <div class="stat-box">
-                            <div class="stat-value">214%</div>
-                            <div class="stat-label">גידול ממוצע ברשויות ערביות</div>
-                        </div>
+                        <a href="#" class="doc-link">📄 קרא את המסמך המלא</a>
                     </div>
-
-                    <div class="chart-container">
-                        <canvas id="urbanChart"></canvas>
-                    </div>
-
-                    <table class="info-table">
-                        <thead>
-                            <tr>
-                                <th>אשכול חברתי-כלכלי</th>
-                                <th>שינוי בתקני שוטרים</th>
-                                <th>שינוי בתקני פקחים</th>
-                                <th>שינוי בעלויות</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>1-3 (חלש)</strong></td>
-                                <td><span class="trend trend-down">-43% עד -31%</span></td>
-                                <td><span class="trend trend-up">+56% עד +68%</span></td>
-                                <td><span class="trend trend-up">+200% עד +300%</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>4-6 (בינוני)</strong></td>
-                                <td><span class="trend trend-down">-17% עד -25%</span></td>
-                                <td><span class="trend trend-up">+25% עד +47%</span></td>
-                                <td><span class="trend trend-up">+50% עד +100%</span></td>
-                            </tr>
-                            <tr>
-                                <td><strong>7-9 (חזק)</strong></td>
-                                <td><span class="trend trend-down">-10% עד -17%</span></td>
-                                <td><span class="trend trend-up">+21% עד +60%</span></td>
-                                <td><span class="trend trend-up">+8% עד +50%</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <div class="summary-box">
-                        <div class="summary-title">סיכום ומגמות</div>
-                        <div class="summary-text">
-                            • שינוי מהותי במודל השיטור העירוני<br>
-                            • יחס פקח/שוטר חדש: 1:1 עד 1:3 (תלוי בגודל וזמן תגובה)<br>
-                            • רשויות ערביות: גידול ממוצע של 214% בעלויות<br>
-                            • באקה אל גרביה וטמרה: גידול של 438% בעלויות<br>
-                            • השפעה גדולה יותר על רשויות חלשות (אשכולות 1-3)
+                    
+                    <div class="document-card">
+                        <div class="doc-title">שיעורי השתתפות המשרד לביטחון לאומי בתקצוב שכר הפקחים המסייעים</div>
+                        <div class="doc-meta">כתיבה: מתן שחק | מאי 2025</div>
+                        <div class="doc-description">
+                            ניתוח שיעורי ההשתתפות הנוכחיים והצפויים במודל החדש. המסמך מציג את הקשיים של רשויות חלשות לאייש תקנים ולנצל תקציבים, במיוחד ברשויות הערביות.
                         </div>
-                    </div>
-
-                    <div class="document-links">
-                        <a href="#" class="doc-link">📄 ניתוח השפעת המודל החדש</a>
+                        <a href="#" class="doc-link">📄 קרא את המסמך המלא</a>
                     </div>
                 </div>
             </section>
 
             <!-- מפגעים -->
             <section id="terror" class="section">
-                <div class="section-container">
-                    <h2 class="section-title">מפגעים ערבים - אזרחי ותושבי ישראל</h2>
+                <h2 class="section-title">מפגעים ערבים - אזרחי ותושבי ישראל</h2>
+                
+                <div class="bottom-line">
+                    <div class="bottom-line-title">📌 שורה תחתונה</div>
+                    <div class="bottom-line-text">
+                        בין 2015-2024 נרשמו 151 מפגעים ערבים אזרחי ותושבי ישראל. לאחר ירידה לשניים-שלושה מפגעים בשנה (2018-2020), נרשמה עלייה לכ-20 מפגעים בשנה (2021-2024). 65% מהמפגעים היו תושבי הצפון, 27% תושבי מזרח ירושלים ו-8% תושבי הנגב. שנת 2015 רשמה את המספר הגבוה ביותר עם 34 מפגעים.
+                    </div>
+                </div>
+
+                <div class="key-findings">
+                    <div class="findings-title">תובנות מרכזיות מהמסמכים</div>
+                    <div class="finding-item">
+                        <span class="finding-bullet">◈</span> עלייה מ-2-3 מפגעים בשנה (2018-2020) ל-15-21 מפגעים (2021-2024)
+                    </div>
+                    <div class="finding-item">
+                        <span class="finding-bullet">◈</span> התפלגות גיאוגרפית: 65% צפון, 27% מזרח ירושלים, 8% נגב
+                    </div>
+                    <div class="finding-item">
+                        <span class="finding-bullet">◈</span> שיא של 34 מפגעים נרשם ב-2015
+                    </div>
+                    <div class="finding-item">
+                        <span class="finding-bullet">◈</span> 2024: 19 מפגעים (נתונים עד דצמבר)
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-title">מגמות במספר המפגעים 2015-2024</div>
+                    <canvas id="terrorChart"></canvas>
+                    <div class="interactive-note">*הזז את העכבר מעל הגרף לקבלת פילוח לפי אזורים</div>
+                </div>
+
+                <div class="documents-section">
+                    <div class="documents-title">📚 מסמכי הממ"מ בנושא</div>
                     
-                    <div class="key-stats">
-                        <div class="stat-box">
-                            <div class="stat-value">151</div>
-                            <div class="stat-label">סה"כ מפגעים (2015-2024)</div>
+                    <div class="document-card">
+                        <div class="doc-title">נתונים על מפגעים ערבים ישראלים</div>
+                        <div class="doc-meta">כתיבה: רוני הרשקוביץ | 5 במאי 2025</div>
+                        <div class="doc-description">
+                            ניתוח מקיף של 151 מפגעים בעשור האחרון, כולל פילוח גיאוגרפי ומגמות לאורך זמן. המסמך מציג את הקפיצה החדה במספר המפגעים מאז 2021 והריכוז הגבוה באזורי הצפון ומזרח ירושלים.
                         </div>
-                        <div class="stat-box">
-                            <div class="stat-value">98</div>
-                            <div class="stat-label">תושבי הצפון (65%)</div>
-                        </div>
-                        <div class="stat-box">
-                            <div class="stat-value">41</div>
-                            <div class="stat-label">תושבי מזרח ירושלים (27%)</div>
-                        </div>
-                        <div class="stat-box">
-                            <div class="stat-value">12</div>
-                            <div class="stat-label">תושבי הנגב (8%)</div>
-                        </div>
+                        <a href="#" class="doc-link">📄 קרא את המסמך המלא</a>
                     </div>
-
-                    <div class="chart-container">
-                        <canvas id="terrorChart"></canvas>
-                    </div>
-
-                    <div class="summary-box">
-                        <div class="summary-title">סיכום ומגמות</div>
-                        <div class="summary-text">
-                            • 2015: שנת השיא עם 34 מפגעים<br>
-                            • ירידה בשנים 2017-2020 (2-11 מפגעים בשנה)<br>
-                            • עלייה מחודשת ב-2021-2023 (15-21 מפגעים בשנה)<br>
-                            • 2024: 19 מפגעים (עד דצמבר)<br>
-                            • רוב המפגעים מהצפון (65%) ומזרח ירושלים (27%)
+                    
+                    <div class="document-card">
+                        <div class="doc-title">נתונים על הריסת בתי מחבלים</div>
+                        <div class="doc-meta">כתיבה: רוני הרשקוביץ | 2 בינואר 2025</div>
+                        <div class="doc-description">
+                            סקירת מדיניות הריסת בתי מחבלים, כולל נתונים היסטוריים והליכי קבלת החלטות. המסמך מציג את ההבדלים במדיניות בין אזורים שונים ובין סוגי מפגעים.
                         </div>
-                    </div>
-
-                    <div class="document-links">
-                        <a href="#" class="doc-link">📄 נתונים על מפגעים ערבים ישראלים</a>
+                        <a href="#" class="doc-link">📄 קרא את המסמך המלא</a>
                     </div>
                 </div>
             </section>
 
             <!-- דמי חסות -->
             <section id="extortion" class="section">
-                <div class="section-container">
-                    <h2 class="section-title">גביית דמי חסות - תיקון 146 לחוק העונשין</h2>
+                <h2 class="section-title">גביית דמי חסות</h2>
+                
+                <div class="bottom-line">
+                    <div class="bottom-line-title">📌 שורה תחתונה</div>
+                    <div class="bottom-line-text">
+                        בעקבות תיקון 146 לחוק העונשין (אוגוסט 2023), נפתחו 160 תיקי דמי חסות ב-2024. 55% מהתיקים נפתחו במחוז צפון (88 תיקים). מתוך 29 תיקים שנסגרו, 66% נסגרו בעילת "עבריין לא נודע" ו-21% בעילת חוסר ראיות. התפלגות התיקים מראה ריכוז גבוה במחוזות הצפון והמרכז.
+                    </div>
+                </div>
+
+                <div class="key-findings">
+                    <div class="findings-title">תובנות מרכזיות מהמסמכים</div>
+                    <div class="finding-item">
+                        <span class="finding-bullet">◈</span> 160 תיקים נפתחו ב-2024, השנה הראשונה המלאה של החוק
+                    </div>
+                    <div class="finding-item">
+                        <span class="finding-bullet">◈</span> 55% מהתיקים נפתחו במחוז צפון
+                    </div>
+                    <div class="finding-item">
+                        <span class="finding-bullet">◈</span> מתוך 29 תיקים שנסגרו: 66% - עבריין לא נודע, 21% - חוסר ראיות
+                    </div>
+                    <div class="finding-item">
+                        <span class="finding-bullet">◈</span> התפלגות: צפון 55%, מרכז 14%, תל אביב 11%, ירושלים 8%
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <div class="chart-title">התפלגות תיקי דמי חסות לפי מחוזות (2024)</div>
+                    <canvas id="extortionChart"></canvas>
+                    <div class="interactive-note">*לחץ על המחוזות בגרף לקבלת מידע על סטטוס התיקים</div>
+                </div>
+
+                <div class="insights-grid">
+                    <div class="insight-box">
+                        <div class="insight-title">ריכוז גיאוגרפי</div>
+                        <div class="insight-text">
+                            88 תיקים במחוז צפון מהווים יותר ממחצית מכלל התיקים בארץ (55%).
+                        </div>
+                    </div>
+                    <div class="insight-box">
+                        <div class="insight-title">סטטוס התיקים</div>
+                        <div class="insight-text">
+                            מתוך התיקים שנסגרו, הרוב (66%) נסגרו ללא איתור חשודים, 21% נוספים בגלל חוסר ראיות.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="documents-section">
+                    <div class="documents-title">📚 מסמכי הממ"מ בנושא</div>
                     
-                    <div class="key-stats">
-                        <div class="stat-box">
-                            <div class="stat-value">160</div>
-                            <div class="stat-label">תיקים ב-2024</div>
+                    <div class="document-card">
+                        <div class="doc-title">גביית דמי חסות - ניתוח נתוני דיווח לכנסת</div>
+                        <div class="doc-meta">כתיבה: צוות הממ"מ | דיווח ראשון: ינואר 2025</div>
+                        <div class="doc-description">
+                            ניתוח הדיווח הראשון של המשטרה לכנסת מכוח תיקון 146. המסמך חושף את הקשיים באכיפת החוק החדש ואת הריכוז הגיאוגרפי של התופעה במחוז צפון.
                         </div>
-                        <div class="stat-box">
-                            <div class="stat-value">88</div>
-                            <div class="stat-label">תיקים במחוז צפון (55%)</div>
-                        </div>
-                        <div class="stat-box">
-                            <div class="stat-value">29</div>
-                            <div class="stat-label">תיקים נסגרו</div>
-                        </div>
-                        <div class="stat-box">
-                            <div class="stat-value">66%</div>
-                            <div class="stat-label">נסגרו - עבריין לא נודע</div>
-                        </div>
+                        <a href="#" class="doc-link">📄 קרא את המסמך המלא</a>
                     </div>
-
-                    <div class="chart-container">
-                        <canvas id="extortionChart"></canvas>
-                    </div>
-
-                    <table class="info-table">
-                        <thead>
-                            <tr>
-                                <th>מחוז</th>
-                                <th>מספר תיקים</th>
-                                <th>אחוז מהסה"כ</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>צפון</strong></td>
-                                <td>88</td>
-                                <td>55%</td>
-                            </tr>
-                            <tr>
-                                <td><strong>מרכז</strong></td>
-                                <td>22</td>
-                                <td>14%</td>
-                            </tr>
-                            <tr>
-                                <td><strong>תל אביב</strong></td>
-                                <td>17</td>
-                                <td>11%</td>
-                            </tr>
-                            <tr>
-                                <td><strong>ירושלים</strong></td>
-                                <td>13</td>
-                                <td>8%</td>
-                            </tr>
-                            <tr>
-                                <td><strong>חוף</strong></td>
-                                <td>10</td>
-                                <td>6%</td>
-                            </tr>
-                            <tr>
-                                <td><strong>דרום</strong></td>
-                                <td>10</td>
-                                <td>6%</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <div class="summary-box">
-                        <div class="summary-title">סיכום ומגמות</div>
-                        <div class="summary-text">
-                            • החוק נכנס לתוקף באוגוסט 2023<br>
-                            • ריכוז גבוה של תיקים במחוז צפון (55%)<br>
-                            • 66% מהתיקים שנסגרו - בגלל עבריין לא נודע<br>
-                            • 21% נסגרו בעילת חוסר ראיות<br>
-                            • קושי באכיפה ובאיתור העבריינים
+                    
+                    <div class="document-card">
+                        <div class="doc-title">סחיטת דמי חסות</div>
+                        <div class="doc-meta">כתיבה: נורית יכימוביץ-כהן | 24 בנובמבר 2021</div>
+                        <div class="doc-description">
+                            מסמך רקע שנכתב טרם חקיקת תיקון 146. המסמך סוקר את התופעה, היקפה ודרכי ההתמודדות עמה, וכולל נתונים היסטוריים על 105 תיקים שנאספו ב-2021.
                         </div>
-                    </div>
-
-                    <div class="document-links">
-                        <a href="#" class="doc-link">📄 גביית דמי חסות - ניתוח נתוני דיווח</a>
+                        <a href="#" class="doc-link">📄 קרא את המסמך המלא</a>
                     </div>
                 </div>
             </section>
@@ -757,11 +774,13 @@
     <footer class="footer">
         <div class="container">
             <p>מרכז המחקר והמידע של הכנסת | <a href="https://www.knesset.gov.il/mmm">www.knesset.gov.il/mmm</a></p>
-            <p style="font-size: 12px; margin-top: 10px;">כל הנתונים מבוססים על מסמכים רשמיים של הממ"מ</p>
+            <p style="font-size: 12px; margin-top: 10px;">כל הנתונים והסיכומים מבוססים על מסמכים רשמיים של הממ"מ</p>
         </div>
     </footer>
 
     <script>
+        let charts = {};
+
         function showSection(sectionId) {
             // Hide all sections
             document.querySelectorAll('.section').forEach(sec => {
@@ -789,30 +808,84 @@
             const chartConfig = {
                 police: {
                     id: 'policeChart',
-                    type: 'bar',
+                    type: 'line',
                     data: {
-                        labels: ['דרומי', 'תל אביב', 'מרכז', 'חוף', 'צפון', 'ירושלים', 'ש"י'],
+                        labels: ['2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
                         datasets: [{
-                            label: 'מצבת שוטרים 2024',
-                            data: [3093, 2696, 2686, 2577, 2523, 2220, 1173],
-                            backgroundColor: '#0038b8',
-                            borderColor: '#002d8f',
-                            borderWidth: 1
+                            label: 'שוטרי קבע',
+                            data: [18638, 19076, 19791, 20806, 22361, 23185, 23214, 23561, 23328, 22949, 22930, 23732],
+                            borderColor: '#0038b8',
+                            backgroundColor: 'rgba(0, 56, 184, 0.1)',
+                            tension: 0.4,
+                            pointRadius: 5,
+                            pointHoverRadius: 7
+                        }, {
+                            label: 'שוטרי חובה',
+                            data: [null, null, null, 4535, 4623, 4831, 4981, 4883, 5176, 5893, 5996, 6200],
+                            borderColor: '#28a745',
+                            backgroundColor: 'rgba(40, 167, 69, 0.1)',
+                            tension: 0.4,
+                            pointRadius: 5,
+                            pointHoverRadius: 7
                         }]
+                    },
+                    options: {
+                        interaction: {
+                            mode: 'index',
+                            intersect: false
+                        },
+                        plugins: {
+                            tooltip: {
+                                backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                                padding: 12,
+                                titleFont: { size: 14 },
+                                bodyFont: { size: 13 }
+                            }
+                        }
                     }
                 },
                 crime: {
                     id: 'crimeChart',
-                    type: 'line',
+                    type: 'bar',
                     data: {
                         labels: ['2020', '2021', '2022', '2023', '2024'],
                         datasets: [{
-                            label: 'תיקים שנפתחו (באלפים)',
+                            label: 'סה"כ תיקים',
                             data: [334, 369, 382, 382, 371],
-                            borderColor: '#0038b8',
-                            backgroundColor: 'rgba(0, 56, 184, 0.1)',
-                            tension: 0.4
+                            backgroundColor: '#0038b8',
+                            borderColor: '#002d8f',
+                            borderWidth: 1
+                        }, {
+                            label: 'שיעור דיווח (%)',
+                            data: [32, 29, 27, 25.6, 24],
+                            type: 'line',
+                            borderColor: '#dc3545',
+                            backgroundColor: 'transparent',
+                            yAxisID: 'y1',
+                            borderWidth: 2,
+                            pointRadius: 5
                         }]
+                    },
+                    options: {
+                        interaction: {
+                            mode: 'index',
+                            intersect: false
+                        },
+                        scales: {
+                            y: {
+                                type: 'linear',
+                                display: true,
+                                position: 'left',
+                                title: { display: true, text: 'תיקים (אלפים)' }
+                            },
+                            y1: {
+                                type: 'linear',
+                                display: true,
+                                position: 'right',
+                                title: { display: true, text: 'שיעור דיווח (%)' },
+                                grid: { drawOnChartArea: false }
+                            }
+                        }
                     }
                 },
                 murder: {
@@ -821,32 +894,109 @@
                     data: {
                         labels: ['2021', '2022', '2023', '2024'],
                         datasets: [{
-                            label: 'אירועי רצח',
-                            data: [142, 148, 274, 263],
+                            label: 'יהודים',
+                            data: [36, 36, 47, 38],
+                            backgroundColor: '#0038b8',
+                            borderColor: '#002d8f',
+                            borderWidth: 1
+                        }, {
+                            label: 'ערבים',
+                            data: [115, 103, 210, 206],
                             backgroundColor: '#dc3545',
                             borderColor: '#c82333',
                             borderWidth: 1
+                        }, {
+                            label: 'אחר',
+                            data: [10, 3, 17, 19],
+                            backgroundColor: '#6c757d',
+                            borderColor: '#5a6268',
+                            borderWidth: 1
                         }]
+                    },
+                    options: {
+                        interaction: {
+                            mode: 'index',
+                            intersect: false
+                        },
+                        plugins: {
+                            tooltip: {
+                                callbacks: {
+                                    afterLabel: function(context) {
+                                        if (context.datasetIndex === 0) { // יהודים
+                                            const pData = {
+                                                '2021': 'שיעור פענוח: 78%',
+                                                '2022': 'שיעור פענוח: 72%',
+                                                '2023': 'שיעור פענוח: 66%',
+                                                '2024': 'שיעור פענוח: 50%'
+                                            };
+                                            return pData[context.label] || '';
+                                        } else if (context.datasetIndex === 1) { // ערבים
+                                            const pData = {
+                                                '2021': 'שיעור פענוח: 30%',
+                                                '2022': 'שיעור פענוח: 23%',
+                                                '2023': 'שיעור פענוח: 16%',
+                                                '2024': 'שיעור פענוח: 18%'
+                                            };
+                                            return pData[context.label] || '';
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                stacked: false
+                            },
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'מספר אירועים'
+                                }
+                            }
+                        }
                     }
                 },
                 urban: {
                     id: 'urbanChart',
                     type: 'bar',
                     data: {
-                        labels: ['אשכול 1-3', 'אשכול 4-6', 'אשכול 7-9'],
+                        labels: ['רשויות חלשות (1-3)', 'רשויות בינוניות (4-6)', 'רשויות חזקות (7-9)'],
                         datasets: [{
+                            label: 'שינוי בתקני שוטרים (%)',
+                            data: [-37, -20, -14],
+                            backgroundColor: '#dc3545',
+                            borderColor: '#c82333',
+                            borderWidth: 1
+                        }, {
                             label: 'שינוי בתקני פקחים (%)',
                             data: [60, 39, 35],
                             backgroundColor: '#28a745',
                             borderColor: '#218838',
                             borderWidth: 1
                         }, {
-                            label: 'שינוי בתקני שוטרים (%)',
-                            data: [-37, -20, -14],
-                            backgroundColor: '#dc3545',
-                            borderColor: '#c82333',
+                            label: 'שינוי בעלויות לרשות (%)',
+                            data: [250, 75, 29],
+                            backgroundColor: '#ffc107',
+                            borderColor: '#e0a800',
                             borderWidth: 1
                         }]
+                    },
+                    options: {
+                        interaction: {
+                            mode: 'index',
+                            intersect: false
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    callback: function(value) {
+                                        return value + '%';
+                                    }
+                                }
+                            }
+                        }
                     }
                 },
                 terror: {
@@ -855,30 +1005,78 @@
                     data: {
                         labels: ['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
                         datasets: [{
-                            label: 'מספר מפגעים',
+                            label: 'סה"כ מפגעים',
                             data: [34, 23, 11, 3, 2, 3, 20, 15, 21, 19],
-                            borderColor: '#ffc107',
-                            backgroundColor: 'rgba(255, 193, 7, 0.1)',
-                            tension: 0.4
+                            borderColor: '#0038b8',
+                            backgroundColor: 'rgba(0, 56, 184, 0.1)',
+                            tension: 0.4,
+                            fill: true,
+                            pointRadius: 6,
+                            pointHoverRadius: 8,
+                            pointBackgroundColor: '#0038b8',
+                            pointBorderColor: '#fff',
+                            pointBorderWidth: 2
                         }]
+                    },
+                    options: {
+                        interaction: {
+                            mode: 'index',
+                            intersect: false
+                        },
+                        plugins: {
+                            tooltip: {
+                                callbacks: {
+                                    afterLabel: function(context) {
+                                        const distribution = {
+                                            '2024': 'צפון: 10 | מזרח י-ם: 5 | נגב: 4'
+                                        };
+                                        return distribution[context.label] || '';
+                                    }
+                                }
+                            }
+                        }
                     }
                 },
                 extortion: {
                     id: 'extortionChart',
-                    type: 'pie',
+                    type: 'doughnut',
                     data: {
-                        labels: ['צפון', 'מרכז', 'תל אביב', 'ירושלים', 'חוף', 'דרום'],
+                        labels: ['צפון (55%)', 'מרכז (14%)', 'תל אביב (11%)', 'ירושלים (8%)', 'חוף (6%)', 'דרום (6%)'],
                         datasets: [{
                             data: [88, 22, 17, 13, 10, 10],
                             backgroundColor: [
+                                '#dc3545',
                                 '#0038b8',
                                 '#28a745',
                                 '#ffc107',
-                                '#dc3545',
-                                '#6c757d',
-                                '#17a2b8'
-                            ]
+                                '#17a2b8',
+                                '#6c757d'
+                            ],
+                            borderWidth: 2,
+                            borderColor: '#fff'
                         }]
+                    },
+                    options: {
+                        interaction: {
+                            mode: 'index',
+                            intersect: false
+                        },
+                        plugins: {
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return context.label + ': ' + context.parsed + ' תיקים';
+                                    }
+                                }
+                            },
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    padding: 15,
+                                    font: { size: 13 }
+                                }
+                            }
+                        }
                     }
                 }
             };
@@ -890,32 +1088,49 @@
             if (!canvas) return;
 
             // Destroy existing chart if exists
-            if (canvas.chart) {
-                canvas.chart.destroy();
+            if (charts[config.id]) {
+                charts[config.id].destroy();
             }
 
-            // Create new chart
-            canvas.chart = new Chart(canvas, {
+            // Create new chart with interactive features
+            charts[config.id] = new Chart(canvas, {
                 type: config.type,
                 data: config.data,
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'nearest',
+                        axis: 'x',
+                        intersect: false
+                    },
                     plugins: {
                         legend: {
                             position: 'bottom',
                             labels: {
                                 font: {
                                     family: 'Arial',
-                                    size: 12
-                                }
+                                    size: 13
+                                },
+                                padding: 20
                             }
                         },
-                        title: {
-                            display: false
+                        tooltip: {
+                            enabled: true,
+                            backgroundColor: 'rgba(0, 0, 0, 0.85)',
+                            padding: 15,
+                            titleFont: {
+                                size: 14,
+                                weight: 'bold'
+                            },
+                            bodyFont: {
+                                size: 13
+                            },
+                            displayColors: true,
+                            callbacks: config.options?.plugins?.tooltip?.callbacks || {}
                         }
                     },
-                    scales: config.type !== 'pie' ? {
+                    scales: config.options?.scales || (config.type !== 'doughnut' && config.type !== 'pie' ? {
                         y: {
                             beginAtZero: true,
                             ticks: {
@@ -923,6 +1138,9 @@
                                     family: 'Arial',
                                     size: 11
                                 }
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)'
                             }
                         },
                         x: {
@@ -931,9 +1149,13 @@
                                     family: 'Arial',
                                     size: 11
                                 }
+                            },
+                            grid: {
+                                display: false
                             }
                         }
-                    } : undefined
+                    } : undefined),
+                    ...config.options
                 }
             });
         }
