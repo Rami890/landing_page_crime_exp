@@ -501,13 +501,46 @@
             color: #666;
             font-size: 12px;
             font-style: italic;
+            flex: 1;
         }
 
         .preparation-actions {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
             margin-top: 8px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .notify-btn {
+            background: #17a2b8;
+            color: white;
+            border: none;
+            padding: 4px 12px;
+            border-radius: 3px;
+            font-size: 11px;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .notify-btn:hover {
+            background: #138496;
+        }
+
+        .notify-btn:active {
+            background: #0f6674;
+        }
+
+        .preparation-actions .researcher-name {
+            font-size: 12px;
+        }
+
+        .preparation-actions .researcher-popup {
+            font-size: 13px;
         }
 
         .notify-btn {
@@ -773,7 +806,36 @@
                     <div class="preparation-item">
                         <div class="preparation-topic">השוואה בינלאומית של יחס שוטרים לאוכלוסייה</div>
                         <div class="preparation-actions">
-                            <div class="preparation-status">צפוי לפרסום: מרץ 2025</div>
+                            <div class="preparation-status">צפוי לפרסום: מרץ 2025 | 
+                                <span class="researcher-name">
+                                    ד"ר תהילה שחר
+                                    <div class="researcher-popup">
+                                        <div class="popup-header">
+                                            <div class="popup-name">ד"ר תהילה שחר</div>
+                                            <div class="popup-title">חוקרת בכירה - מדיניות ביטחון פנים</div>
+                                        </div>
+                                        <div class="popup-contact">
+                                            <div class="contact-item">
+                                                <span class="contact-icon">📧</span>
+                                                <a href="mailto:tehila.shachar@knesset.gov.il" class="contact-link">tehila.shachar@knesset.gov.il</a>
+                                            </div>
+                                            <div class="contact-item">
+                                                <span class="contact-icon">📞</span>
+                                                <a href="tel:+97226408374" class="contact-link">02-6408374</a>
+                                            </div>
+                                            <div class="contact-item">
+                                                <span class="contact-icon">🏢</span>
+                                                <span>משרד 3.247, בניין הכנסת</span>
+                                            </div>
+                                        </div>
+                                        <div class="expertise-tags">
+                                            <span class="expertise-tag">כוח אדם במשטרה</span>
+                                            <span class="expertise-tag">מדיניות ביטחון</span>
+                                            <span class="expertise-tag">ניתוח נתונים</span>
+                                        </div>
+                                    </div>
+                                </span>
+                            </div>
                             <button class="notify-btn" onclick="subscribeToUpdate('international-comparison')">🔔 הרשם לעדכון</button>
                         </div>
                     </div>
@@ -781,7 +843,36 @@
                     <div class="preparation-item">
                         <div class="preparation-topic">השפעת הטכנולוגיה על צרכי כוח אדם במשטרה</div>
                         <div class="preparation-actions">
-                            <div class="preparation-status">בשלבי כתיבה מתקדמים</div>
+                            <div class="preparation-status">בשלבי כתיבה מתקדמים | 
+                                <span class="researcher-name">
+                                    מתן שחק
+                                    <div class="researcher-popup">
+                                        <div class="popup-header">
+                                            <div class="popup-name">מתן שחק</div>
+                                            <div class="popup-title">חוקר - טכנולוגיה ומערכות מידע</div>
+                                        </div>
+                                        <div class="popup-contact">
+                                            <div class="contact-item">
+                                                <span class="contact-icon">📧</span>
+                                                <a href="mailto:matan.shachak@knesset.gov.il" class="contact-link">matan.shachak@knesset.gov.il</a>
+                                            </div>
+                                            <div class="contact-item">
+                                                <span class="contact-icon">📞</span>
+                                                <a href="tel:+97226408291" class="contact-link">02-6408291</a>
+                                            </div>
+                                            <div class="contact-item">
+                                                <span class="contact-icon">🏢</span>
+                                                <span>משרד 3.251, בניין הכנסת</span>
+                                            </div>
+                                        </div>
+                                        <div class="expertise-tags">
+                                            <span class="expertise-tag">פשיעה מקוונת</span>
+                                            <span class="expertise-tag">ניתוח נתונים</span>
+                                            <span class="expertise-tag">מערכות GIS</span>
+                                        </div>
+                                    </div>
+                                </span>
+                            </div>
                             <button class="notify-btn" onclick="subscribeToUpdate('technology-impact')">🔔 הרשם לעדכון</button>
                         </div>
                     </div>
@@ -789,7 +880,36 @@
                     <div class="preparation-item">
                         <div class="preparation-topic">ניתוח עלויות הכשרה וגיוס לעומת שימור כוח אדם</div>
                         <div class="preparation-actions">
-                            <div class="preparation-status">במחקר ראשוני</div>
+                            <div class="preparation-status">במחקר ראשוני | 
+                                <span class="researcher-name">
+                                    ד"ר נורית יכימוביץ-כהן
+                                    <div class="researcher-popup">
+                                        <div class="popup-header">
+                                            <div class="popup-name">ד"ר נורית יכימוביץ-כהן</div>
+                                            <div class="popup-title">חוקרת בכירה - גיאוגרפיה ופיתוח אזורי</div>
+                                        </div>
+                                        <div class="popup-contact">
+                                            <div class="contact-item">
+                                                <span class="contact-icon">📧</span>
+                                                <a href="mailto:nurit.yakimovich@knesset.gov.il" class="contact-link">nurit.yakimovich@knesset.gov.il</a>
+                                            </div>
+                                            <div class="contact-item">
+                                                <span class="contact-icon">📞</span>
+                                                <a href="tel:+97226408156" class="contact-link">02-6408156</a>
+                                            </div>
+                                            <div class="contact-item">
+                                                <span class="contact-icon">🏢</span>
+                                                <span>משרד 3.254, בניין הכנסת</span>
+                                            </div>
+                                        </div>
+                                        <div class="expertise-tags">
+                                            <span class="expertise-tag">איוש פריפריה</span>
+                                            <span class="expertise-tag">גיאוגרפיה חברתית</span>
+                                            <span class="expertise-tag">מדיניות אזורית</span>
+                                        </div>
+                                    </div>
+                                </span>
+                            </div>
                             <button class="notify-btn" onclick="subscribeToUpdate('cost-analysis')">🔔 הרשם לעדכון</button>
                         </div>
                     </div>
@@ -854,6 +974,44 @@
                         <div class="recent-doc-summary">לקט מקיף של נתוני הפשיעה המדווחת בישראל לתקופה 2020-2024, המציג ניתוח של 1,470,780 תיקים פליליים (כ-294,156 תיקים בשנה בממוצע).</div>
                     </div>
                     
+                    <div class="recent-doc-item">
+                        <a href="https://fs.knesset.gov.il/globaldocs/MMM/94f48199-64d9-ef11-a856-005056aa1f91/2_94f48199-64d9-ef11-a856-005056aa1f91_11_20998.pdf" target="_blank" class="recent-doc-title">מבט על: מדידת פשיעה</a>
+                        <div class="recent-doc-meta">
+                            <span class="recent-doc-date">15 בינואר 2025</span>
+                            <span class="recent-doc-author">
+                                <span class="researcher-name">
+                                    רמי שוורץ
+                                    <div class="researcher-popup">
+                                        <div class="popup-header">
+                                            <div class="popup-name">רמי שוורץ</div>
+                                            <div class="popup-title">חוקר - קרימינולוגיה ונתוני פשיעה</div>
+                                        </div>
+                                        <div class="popup-contact">
+                                            <div class="contact-item">
+                                                <span class="contact-icon">📧</span>
+                                                <a href="mailto:rami.schwartz@knesset.gov.il" class="contact-link">rami.schwartz@knesset.gov.il</a>
+                                            </div>
+                                            <div class="contact-item">
+                                                <span class="contact-icon">📞</span>
+                                                <a href="tel:+97226408445" class="contact-link">02-6408445</a>
+                                            </div>
+                                            <div class="contact-item">
+                                                <span class="contact-icon">🏢</span>
+                                                <span>משרד 3.248, בניין הכנסת</span>
+                                            </div>
+                                        </div>
+                                        <div class="expertise-tags">
+                                            <span class="expertise-tag">נתוני פשיעה</span>
+                                            <span class="expertise-tag">אירועי רצח</span>
+                                            <span class="expertise-tag">ויזואליזציה</span>
+                                        </div>
+                                    </div>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="recent-doc-summary">מבט כולל על שיטות מדידת פשיעה בישראל ובעולם, הבדלים בין פשיעה מדווחת לפשיעה בפועל, ובחינת מקורות מידע שונים לניתוח מגמות פשיעה. התוצר סוקר את המגבלות והאתגרים במדידת היקף הפשיעה האמיתי, כולל ניתוח של שיעורי הדיווח השונים בסוגי עבירות ואוכלוסיות מגוונות.</div>
+                    </div>
+                    
                     <div class="view-all-docs">
                         <a href="crime-documents.html" class="view-all-link">📚 כל תוצרי הממ"מ בנושא פשיעה מדווחת</a>
                     </div>
@@ -865,7 +1023,36 @@
                     <div class="preparation-item">
                         <div class="preparation-topic">מיפוי פשיעה אלימה בערים הגדולות - ניתוח מרחבי</div>
                         <div class="preparation-actions">
-                            <div class="preparation-status">צפוי לפרסום: אפריל 2025</div>
+                            <div class="preparation-status">צפוי לפרסום: אפריל 2025 | 
+                                <span class="researcher-name">
+                                    רמי שוורץ
+                                    <div class="researcher-popup">
+                                        <div class="popup-header">
+                                            <div class="popup-name">רמי שוורץ</div>
+                                            <div class="popup-title">חוקר - קרימינולוגיה ונתוני פשיעה</div>
+                                        </div>
+                                        <div class="popup-contact">
+                                            <div class="contact-item">
+                                                <span class="contact-icon">📧</span>
+                                                <a href="mailto:rami.schwartz@knesset.gov.il" class="contact-link">rami.schwartz@knesset.gov.il</a>
+                                            </div>
+                                            <div class="contact-item">
+                                                <span class="contact-icon">📞</span>
+                                                <a href="tel:+97226408445" class="contact-link">02-6408445</a>
+                                            </div>
+                                            <div class="contact-item">
+                                                <span class="contact-icon">🏢</span>
+                                                <span>משרד 3.248, בניין הכנסת</span>
+                                            </div>
+                                        </div>
+                                        <div class="expertise-tags">
+                                            <span class="expertise-tag">נתוני פשיעה</span>
+                                            <span class="expertise-tag">אירועי רצח</span>
+                                            <span class="expertise-tag">ויזואליזציה</span>
+                                        </div>
+                                    </div>
+                                </span>
+                            </div>
                             <button class="notify-btn" onclick="subscribeToUpdate('urban-crime-mapping')">🔔 הרשם לעדכון</button>
                         </div>
                     </div>
@@ -873,7 +1060,36 @@
                     <div class="preparation-item">
                         <div class="preparation-topic">השפעת רשתות חברתיות על דפוסי פשיעה וגילוי</div>
                         <div class="preparation-actions">
-                            <div class="preparation-status">בשלבי איסוף נתונים</div>
+                            <div class="preparation-status">בשלבי איסוף נתונים | 
+                                <span class="researcher-name">
+                                    מתן שחק
+                                    <div class="researcher-popup">
+                                        <div class="popup-header">
+                                            <div class="popup-name">מתן שחק</div>
+                                            <div class="popup-title">חוקר - טכנולוגיה ומערכות מידע</div>
+                                        </div>
+                                        <div class="popup-contact">
+                                            <div class="contact-item">
+                                                <span class="contact-icon">📧</span>
+                                                <a href="mailto:matan.shachak@knesset.gov.il" class="contact-link">matan.shachak@knesset.gov.il</a>
+                                            </div>
+                                            <div class="contact-item">
+                                                <span class="contact-icon">📞</span>
+                                                <a href="tel:+97226408291" class="contact-link">02-6408291</a>
+                                            </div>
+                                            <div class="contact-item">
+                                                <span class="contact-icon">🏢</span>
+                                                <span>משרד 3.251, בניין הכנסת</span>
+                                            </div>
+                                        </div>
+                                        <div class="expertise-tags">
+                                            <span class="expertise-tag">פשיעה מקוונת</span>
+                                            <span class="expertise-tag">ניתוח נתונים</span>
+                                            <span class="expertise-tag">מערכות GIS</span>
+                                        </div>
+                                    </div>
+                                </span>
+                            </div>
                             <button class="notify-btn" onclick="subscribeToUpdate('social-media-crime')">🔔 הרשם לעדכון</button>
                         </div>
                     </div>
@@ -881,7 +1097,36 @@
                     <div class="preparation-item">
                         <div class="preparation-topic">פשיעה כלכלית במשק הדיגיטלי - מגמות</div>
                         <div class="preparation-actions">
-                            <div class="preparation-status">במחקר ראשוני</div>
+                            <div class="preparation-status">במחקר ראשוני | 
+                                <span class="researcher-name">
+                                    ד"ר נלי כפיר אורן
+                                    <div class="researcher-popup">
+                                        <div class="popup-header">
+                                            <div class="popup-name">ד"ר נלי כפיר אורן</div>
+                                            <div class="popup-title">חוקרת בכירה - משפט פלילי ומדיניות אכיפה</div>
+                                        </div>
+                                        <div class="popup-contact">
+                                            <div class="contact-item">
+                                                <span class="contact-icon">📧</span>
+                                                <a href="mailto:nelly.kafir@knesset.gov.il" class="contact-link">nelly.kafir@knesset.gov.il</a>
+                                            </div>
+                                            <div class="contact-item">
+                                                <span class="contact-icon">📞</span>
+                                                <a href="tel:+97226408298" class="contact-link">02-6408298</a>
+                                            </div>
+                                            <div class="contact-item">
+                                                <span class="contact-icon">🏢</span>
+                                                <span>משרד 3.249, בניין הכנסת</span>
+                                            </div>
+                                        </div>
+                                        <div class="expertise-tags">
+                                            <span class="expertise-tag">משפט פלילי</span>
+                                            <span class="expertise-tag">מדיניות אכיפה</span>
+                                            <span class="expertise-tag">עבירות מין</span>
+                                        </div>
+                                    </div>
+                                </span>
+                            </div>
                             <button class="notify-btn" onclick="subscribeToUpdate('digital-economic-crime')">🔔 הרשם לעדכון</button>
                         </div>
                     </div>
@@ -957,7 +1202,36 @@
                     <div class="preparation-item">
                         <div class="preparation-topic">השוואה בינלאומית של מגמות רצח וטיפול משטרתי</div>
                         <div class="preparation-actions">
-                            <div class="preparation-status">צפוי לפרסום: מאי 2025</div>
+                            <div class="preparation-status">צפוי לפרסום: מאי 2025 | 
+                                <span class="researcher-name">
+                                    עדו אבגר
+                                    <div class="researcher-popup">
+                                        <div class="popup-header">
+                                            <div class="popup-name">עדו אבגר</div>
+                                            <div class="popup-title">חוקר - סוציולוגיה ומדיניות חברתית</div>
+                                        </div>
+                                        <div class="popup-contact">
+                                            <div class="contact-item">
+                                                <span class="contact-icon">📧</span>
+                                                <a href="mailto:ido.avgar@knesset.gov.il" class="contact-link">ido.avgar@knesset.gov.il</a>
+                                            </div>
+                                            <div class="contact-item">
+                                                <span class="contact-icon">📞</span>
+                                                <a href="tel:+97226408332" class="contact-link">02-6408332</a>
+                                            </div>
+                                            <div class="contact-item">
+                                                <span class="contact-icon">🏢</span>
+                                                <span>משרד 3.250, בניין הכנסת</span>
+                                            </div>
+                                        </div>
+                                        <div class="expertise-tags">
+                                            <span class="expertise-tag">חברה ערבית</span>
+                                            <span class="expertise-tag">סוציולוגיה</span>
+                                            <span class="expertise-tag">מדיניות חברתית</span>
+                                        </div>
+                                    </div>
+                                </span>
+                            </div>
                             <button class="notify-btn" onclick="subscribeToUpdate('international-murder-trends')">🔔 הרשם לעדכון</button>
                         </div>
                     </div>
@@ -965,7 +1239,36 @@
                     <div class="preparation-item">
                         <div class="preparation-topic">ניתוח פערי פענוח לפי מאפיינים דמוגרפיים וגיאוגרפיים</div>
                         <div class="preparation-actions">
-                            <div class="preparation-status">בשלבי מחקר</div>
+                            <div class="preparation-status">בשלבי מחקר | 
+                                <span class="researcher-name">
+                                    ד"ר נורית יכימוביץ-כהן
+                                    <div class="researcher-popup">
+                                        <div class="popup-header">
+                                            <div class="popup-name">ד"ר נורית יכימוביץ-כהן</div>
+                                            <div class="popup-title">חוקרת בכירה - גיאוגרפיה ופיתוח אזורי</div>
+                                        </div>
+                                        <div class="popup-contact">
+                                            <div class="contact-item">
+                                                <span class="contact-icon">📧</span>
+                                                <a href="mailto:nurit.yakimovich@knesset.gov.il" class="contact-link">nurit.yakimovich@knesset.gov.il</a>
+                                            </div>
+                                            <div class="contact-item">
+                                                <span class="contact-icon">📞</span>
+                                                <a href="tel:+97226408156" class="contact-link">02-6408156</a>
+                                            </div>
+                                            <div class="contact-item">
+                                                <span class="contact-icon">🏢</span>
+                                                <span>משרד 3.254, בניין הכנסת</span>
+                                            </div>
+                                        </div>
+                                        <div class="expertise-tags">
+                                            <span class="expertise-tag">איוש פריפריה</span>
+                                            <span class="expertise-tag">גיאוגרפיה חברתית</span>
+                                            <span class="expertise-tag">מדיניות אזורית</span>
+                                        </div>
+                                    </div>
+                                </span>
+                            </div>
                             <button class="notify-btn" onclick="subscribeToUpdate('investigation-gaps-analysis')">🔔 הרשם לעדכון</button>
                         </div>
                     </div>
@@ -973,7 +1276,36 @@
                     <div class="preparation-item">
                         <div class="preparation-topic">השפעת השקעות בטכנולוגיית חקירות על שיעורי פענוח</div>
                         <div class="preparation-actions">
-                            <div class="preparation-status">במחקר ראשוני</div>
+                            <div class="preparation-status">במחקר ראשוני | 
+                                <span class="researcher-name">
+                                    מתן שחק
+                                    <div class="researcher-popup">
+                                        <div class="popup-header">
+                                            <div class="popup-name">מתן שחק</div>
+                                            <div class="popup-title">חוקר - טכנולוגיה ומערכות מידע</div>
+                                        </div>
+                                        <div class="popup-contact">
+                                            <div class="contact-item">
+                                                <span class="contact-icon">📧</span>
+                                                <a href="mailto:matan.shachak@knesset.gov.il" class="contact-link">matan.shachak@knesset.gov.il</a>
+                                            </div>
+                                            <div class="contact-item">
+                                                <span class="contact-icon">📞</span>
+                                                <a href="tel:+97226408291" class="contact-link">02-6408291</a>
+                                            </div>
+                                            <div class="contact-item">
+                                                <span class="contact-icon">🏢</span>
+                                                <span>משרד 3.251, בניין הכנסת</span>
+                                            </div>
+                                        </div>
+                                        <div class="expertise-tags">
+                                            <span class="expertise-tag">פשיעה מקוונת</span>
+                                            <span class="expertise-tag">ניתוח נתונים</span>
+                                            <span class="expertise-tag">מערכות GIS</span>
+                                        </div>
+                                    </div>
+                                </span>
+                            </div>
                             <button class="notify-btn" onclick="subscribeToUpdate('tech-investigation-impact')">🔔 הרשם לעדכון</button>
                         </div>
                     </div>
@@ -1143,17 +1475,42 @@
                     data: {
                         labels: ['2020', '2021', '2022', '2023', '2024'],
                         datasets: [{
-                            label: 'סה"כ תיקים',
+                            label: 'סה"כ תיקים (אלפים)',
                             data: [334, 369, 382, 382, 371],
                             backgroundColor: '#0038b8',
                             borderColor: '#002d8f',
                             borderWidth: 1
+                        }, {
+                            label: 'שיעור דיווח (%)',
+                            data: [32, 29, 27, 25.6, 24],
+                            type: 'line',
+                            borderColor: '#dc3545',
+                            backgroundColor: 'transparent',
+                            yAxisID: 'y1',
+                            borderWidth: 2,
+                            pointRadius: 5,
+                            pointHoverRadius: 7
                         }]
                     },
                     options: {
                         interaction: {
                             mode: 'index',
                             intersect: false
+                        },
+                        scales: {
+                            y: {
+                                type: 'linear',
+                                display: true,
+                                position: 'left',
+                                title: { display: true, text: 'תיקים (אלפים)' }
+                            },
+                            y1: {
+                                type: 'linear',
+                                display: true,
+                                position: 'right',
+                                title: { display: true, text: 'שיעור דיווח (%)' },
+                                grid: { drawOnChartArea: false }
+                            }
                         }
                     }
                 },
