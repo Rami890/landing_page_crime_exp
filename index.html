@@ -84,8 +84,8 @@
             gap: 0;
         }
         
-        .search-container {
-            margin-left: auto;
+        .search-container-left {
+            margin-right: auto;
             padding: 8px 0;
         }
         
@@ -341,45 +341,124 @@
         .view-all-link:hover {
             background: #218838;
         }
-        
-        .chart-container {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            margin: 30px 0;
-            height: 450px;
+
+        /* Researcher Interactive Styles */
+        .researcher-name {
+            color: #0038b8;
+            cursor: pointer;
+            text-decoration: underline;
+            text-decoration-style: dotted;
             position: relative;
+            display: inline-block;
+            transition: all 0.3s ease;
         }
-        
-        .chart-title {
-            color: #333;
+
+        .researcher-name:hover {
+            color: #002d8f;
+            text-decoration-style: solid;
+            font-weight: bold;
+        }
+
+        .researcher-popup {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border: 2px solid #0038b8;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            min-width: 280px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            margin-bottom: 10px;
+        }
+
+        .researcher-popup::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 8px solid transparent;
+            border-top-color: #0038b8;
+        }
+
+        .researcher-name:hover .researcher-popup {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-header {
+            border-bottom: 1px solid #e5e5e5;
+            padding-bottom: 10px;
+            margin-bottom: 12px;
+        }
+
+        .popup-name {
+            font-weight: bold;
+            color: #0038b8;
             font-size: 16px;
-            margin-bottom: 20px;
-            text-align: center;
+            margin-bottom: 4px;
         }
-        
-        .interactive-note {
-            text-align: center;
+
+        .popup-title {
             color: #666;
-            font-size: 12px;
-            margin-top: 10px;
+            font-size: 13px;
             font-style: italic;
         }
-        
-        .footer {
-            background: #333;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            margin-top: 50px;
+
+        .popup-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
-        
-        .footer a {
-            color: #b8d1ff;
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #333;
+        }
+
+        .contact-icon {
+            font-size: 14px;
+            width: 18px;
+            color: #0038b8;
+        }
+
+        .contact-link {
+            color: #0038b8;
             text-decoration: none;
+            transition: color 0.3s;
         }
-        
+
+        .contact-link:hover {
+            color: #002d8f;
+            text-decoration: underline;
+        }
+
+        .expertise-tags {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .expertise-tag {
+            display: inline-block;
+            background: #f0f5ff;
+            color: #0038b8;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            margin: 2px;
+            border: 1px solid #b8d1ff;
+        }
+
         .in-preparation {
             background: #fff3cd;
             border-radius: 8px;
@@ -452,6 +531,31 @@
             background: #0f6674;
         }
 
+        .chart-container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            margin: 30px 0;
+            height: 450px;
+            position: relative;
+        }
+        
+        .chart-title {
+            color: #333;
+            font-size: 16px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .interactive-note {
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
         .empty-section {
             background: white;
             border-radius: 8px;
@@ -481,6 +585,19 @@
             max-width: 500px;
             margin: 0 auto;
         }
+
+        .footer {
+            background: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .footer a {
+            color: #b8d1ff;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -499,18 +616,11 @@
     <nav class="nav-tabs">
         <div class="container">
             <div class="tabs-container">
-                <div class="tabs-wrapper">
-                    <button class="tab active" onclick="showSection('police')">כוח אדם במשטרה</button>
-                    <button class="tab" onclick="showSection('crime')">פשיעה מדווחת</button>
-                    <button class="tab" onclick="showSection('murder')">אירועי רצח</button>
-                    <button class="tab" onclick="showSection('urban')">שיטור עירוני</button>
-                    <button class="tab" onclick="showSection('budget')">תקציב המשרד</button>
-                </div>
-                <div class="search-container">
+                <div class="search-container-left">
                     <div class="search-box">
                         <span class="search-icon">🔍</span>
-                        <input type="text" class="search-input" placeholder="חפש תוצרים ותוכן..." onkeyup="performSearch(event)" onfocus="showSearchResults()" onblur="setTimeout(hideSearchResults, 200)">
-                        <div class="search-results" id="searchResults">
+                        <input type="text" class="search-input" placeholder="חפש תוצרים ותוכן במאגר הממ'מ..." onkeyup="performSearch(event)" onfocus="showSearchResults()" onblur="setTimeout(hideSearchResults, 200)">
+                        <div class="search-results" id="searchResultsLeft">
                             <div class="search-result-item" onclick="showSection('police')">
                                 <div class="search-result-title">נתונים על כוח האדם במשטרה</div>
                                 <div class="search-result-desc">מצבת השוטרים, גיוסים וסיום שירות</div>
@@ -526,6 +636,14 @@
                         </div>
                     </div>
                 </div>
+                <div class="tabs-wrapper">
+                    <button class="tab active" onclick="showSection('police')">כוח אדם במשטרה</button>
+                    <button class="tab" onclick="showSection('crime')">פשיעה מדווחת</button>
+                    <button class="tab" onclick="showSection('murder')">אירועי רצח</button>
+                    <button class="tab" onclick="showSection('urban')">שיטור עירוני</button>
+                    <button class="tab" onclick="showSection('budget')">תקציב המשרד</button>
+                </div>
+
             </div>
         </div>
     </nav>
@@ -569,30 +687,79 @@
                     <div class="recent-docs-title">📋 תוצרים אחרונים בתחום</div>
                     
                     <div class="recent-doc-item">
-                        <a href="documents/police-workforce-jan-2025.pdf" class="recent-doc-title">עדכון נתוני כוח אדם במשטרה - ינואר 2025</a>
+                        <a href="#" class="recent-doc-title">עדכון נתוני כוח אדם במשטרה - ינואר 2025</a>
                         <div class="recent-doc-meta">
                             <span class="recent-doc-date">15 בינואר 2025</span>
-                            <span class="recent-doc-author">ד"ר תהילה שחר</span>
+                            <span class="recent-doc-author">
+                                <span class="researcher-name">
+                                    ד"ר תהילה שחר
+                                    <div class="researcher-popup">
+                                        <div class="popup-header">
+                                            <div class="popup-name">ד"ר תהילה שחר</div>
+                                            <div class="popup-title">חוקרת בכירה - מדיניות ביטחון פנים</div>
+                                        </div>
+                                        <div class="popup-contact">
+                                            <div class="contact-item">
+                                                <span class="contact-icon">📧</span>
+                                                <a href="mailto:tehila.shachar@knesset.gov.il" class="contact-link">tehila.shachar@knesset.gov.il</a>
+                                            </div>
+                                            <div class="contact-item">
+                                                <span class="contact-icon">📞</span>
+                                                <a href="tel:+97226408374" class="contact-link">02-6408374</a>
+                                            </div>
+                                            <div class="contact-item">
+                                                <span class="contact-icon">🏢</span>
+                                                <span>משרד 3.247, בניין הכנסת</span>
+                                            </div>
+                                        </div>
+                                        <div class="expertise-tags">
+                                            <span class="expertise-tag">כוח אדם במשטרה</span>
+                                            <span class="expertise-tag">מדיניות ביטחון</span>
+                                            <span class="expertise-tag">ניתוח נתונים</span>
+                                        </div>
+                                    </div>
+                                </span>
+                            </span>
                         </div>
                         <div class="recent-doc-summary">התוצר מציג נתוני מצבת השוטרים ל-2024, כולל עלייה של 5% במצבה הכללית ועלייה של 96% בגיוסים במחוז תל אביב. מוצגים נתונים על איוש תקנים בחלוקה לדרגות ומחוזות, כאשר שיעור איוש הסיירים עומד על 84%.</div>
                     </div>
                     
                     <div class="recent-doc-item">
-                        <a href="documents/national-service-police-analysis.pdf" class="recent-doc-title">ניתוח מגמות גיוס בשירות הלאומי המשטרתי</a>
+                        <a href="#" class="recent-doc-title">ניתוח מגמות גיוס בשירות הלאומי המשטרתי</a>
                         <div class="recent-doc-meta">
                             <span class="recent-doc-date">8 בינואר 2025</span>
-                            <span class="recent-doc-author">מתן שחק</span>
+                            <span class="recent-doc-author">
+                                <span class="researcher-name">
+                                    מתן שחק
+                                    <div class="researcher-popup">
+                                        <div class="popup-header">
+                                            <div class="popup-name">מתן שחק</div>
+                                            <div class="popup-title">חוקר - טכנולוגיה ומערכות מידע</div>
+                                        </div>
+                                        <div class="popup-contact">
+                                            <div class="contact-item">
+                                                <span class="contact-icon">📧</span>
+                                                <a href="mailto:matan.shachak@knesset.gov.il" class="contact-link">matan.shachak@knesset.gov.il</a>
+                                            </div>
+                                            <div class="contact-item">
+                                                <span class="contact-icon">📞</span>
+                                                <a href="tel:+97226408291" class="contact-link">02-6408291</a>
+                                            </div>
+                                            <div class="contact-item">
+                                                <span class="contact-icon">🏢</span>
+                                                <span>משרד 3.251, בניין הכנסת</span>
+                                            </div>
+                                        </div>
+                                        <div class="expertise-tags">
+                                            <span class="expertise-tag">פשיעה מקוונת</span>
+                                            <span class="expertise-tag">ניתוח נתונים</span>
+                                            <span class="expertise-tag">מערכות GIS</span>
+                                        </div>
+                                    </div>
+                                </span>
+                            </span>
                         </div>
                         <div class="recent-doc-summary">סקירה של העלייה בגיוסי שוטרי החובה והשירות הלאומי, שגדלו ב-29% ב-2024. הניתוח בוחן את השפעת התוכניות החדשות לעידוד גיוס ואת הפילוח הדמוגרפי של המתגייסים.</div>
-                    </div>
-                    
-                    <div class="recent-doc-item">
-                        <a href="documents/periphery-staffing-challenges.pdf" class="recent-doc-title">נתוני איוש במחוזות הפריפריה</a>
-                        <div class="recent-doc-meta">
-                            <span class="recent-doc-date">2 בינואר 2025</span>
-                            <span class="recent-doc-author">ד"ר נורית יכימוביץ-כהן</span>
-                        </div>
-                        <div class="recent-doc-summary">התוצר מנתח את המצב במחוזות הצפון והדרום, כולל נתונים על גיוס ושימור כוח אדם. נבחנות הסיבות לפערי השכר והתנאים בין המרכז לפריפריה. כולל השוואה בינלאומית למדיניות איוש במשטרות דומות.</div>
                     </div>
                     
                     <div class="view-all-docs">
@@ -640,22 +807,6 @@
                     </div>
                 </div>
 
-                <div class="key-findings">
-                    <div class="findings-title">ממצאים עיקריים מהתוצרים</div>
-                    <div class="finding-item">
-                        <span class="finding-bullet">◈</span> שיעור הדיווח למשטרה: ירידה מ-37% ב-2014 ל-25.6% ב-2023
-                    </div>
-                    <div class="finding-item">
-                        <span class="finding-bullet">◈</span> שיעורי פשיעה לאלף תושבים: הנגב - 248, המרכז - 89
-                    </div>
-                    <div class="finding-item">
-                        <span class="finding-bullet">◈</span> דיווח על עבירות מקוונות: 7.6%
-                    </div>
-                    <div class="finding-item">
-                        <span class="finding-bullet">◈</span> עבירות סדר ציבורי מהוות את הקבוצה הגדולה ביותר
-                    </div>
-                </div>
-
                 <div class="chart-container">
                     <div class="chart-title">מגמות בפשיעה המדווחת 2020-2024 (באלפי תיקים)</div>
                     <canvas id="crimeChart"></canvas>
@@ -666,30 +817,41 @@
                     <div class="recent-docs-title">📋 תוצרים אחרונים בתחום</div>
                     
                     <div class="recent-doc-item">
-                        <a href="documents/crime-report-december-2024.pdf" class="recent-doc-title">דוח פשיעה חודשי - דצמבר 2024</a>
+                        <a href="https://fs.knesset.gov.il/globaldocs/MMM/afa5fbed-ede9-ef11-a856-005056aa1f91/2_afa5fbed-ede9-ef11-a856-005056aa1f91_11_20855.pdf" target="_blank" class="recent-doc-title">לקט נתונים על הפשיעה המדווחת בישראל 2020-2024</a>
                         <div class="recent-doc-meta">
                             <span class="recent-doc-date">12 בינואר 2025</span>
-                            <span class="recent-doc-author">רמי שוורץ</span>
+                            <span class="recent-doc-author">
+                                <span class="researcher-name">
+                                    רמי שוורץ
+                                    <div class="researcher-popup">
+                                        <div class="popup-header">
+                                            <div class="popup-name">רמי שוורץ</div>
+                                            <div class="popup-title">חוקר - קרימינולוגיה ונתוני פשיעה</div>
+                                        </div>
+                                        <div class="popup-contact">
+                                            <div class="contact-item">
+                                                <span class="contact-icon">📧</span>
+                                                <a href="mailto:rami.schwartz@knesset.gov.il" class="contact-link">rami.schwartz@knesset.gov.il</a>
+                                            </div>
+                                            <div class="contact-item">
+                                                <span class="contact-icon">📞</span>
+                                                <a href="tel:+97226408445" class="contact-link">02-6408445</a>
+                                            </div>
+                                            <div class="contact-item">
+                                                <span class="contact-icon">🏢</span>
+                                                <span>משרד 3.248, בניין הכנסת</span>
+                                            </div>
+                                        </div>
+                                        <div class="expertise-tags">
+                                            <span class="expertise-tag">נתוני פשיעה</span>
+                                            <span class="expertise-tag">אירועי רצח</span>
+                                            <span class="expertise-tag">ויזואליזציה</span>
+                                        </div>
+                                    </div>
+                                </span>
+                            </span>
                         </div>
-                        <div class="recent-doc-summary">סיכום נתוני הפשיעה המדווחת לשנת 2024, המציג ירידה של 3% במספר התיקים לעומת 2023 (371 אלף לעומת 382 אלף). הדוח מנתח את ההבדלים הגיאוגרפיים - 248 תיקים לאלף תושבים בנגב לעומת 89 במרכז. מוצגת ירידה בשיעורי הדיווח.</div>
-                    </div>
-                    
-                    <div class="recent-doc-item">
-                        <a href="documents/reporting-rates-decline-analysis.pdf" class="recent-doc-title">ירידת שיעורי הדיווח למשטרה - ניתוח הגורמים</a>
-                        <div class="recent-doc-meta">
-                            <span class="recent-doc-date">5 בינואר 2025</span>
-                            <span class="recent-doc-author">ד"ר נורית יכימוביץ-כהן</span>
-                        </div>
-                        <div class="recent-doc-summary">התוצר בוחן את הירידה בשיעורי הדיווח למשטרה מ-37% ב-2014 ל-25.6% ב-2023. נותח הקשר בין ירידת האמון במערכת האכיפה לפער בין הפשיעה הממשית למדווחת. המחקר כולל ניתוח השוואתי לטרנדים במדינות מערביות אחרות.</div>
-                    </div>
-                    
-                    <div class="recent-doc-item">
-                        <a href="documents/cyber-crime-reporting-challenges.pdf" class="recent-doc-title">פשיעה מקוונת - נתוני דיווח ואכיפה</a>
-                        <div class="recent-doc-meta">
-                            <span class="recent-doc-date">28 בדצמבר 2024</span>
-                            <span class="recent-doc-author">מתן שחק</span>
-                        </div>
-                        <div class="recent-doc-summary">ניתוח הפער בדיווח על עבירות מקוונות, שם 7.6% מהנפגעים פונים למשטרה. התוצר מציג את המכשולים הטכנולוגיים והמבניים העומדים בפני האכיפה הדיגיטלית, וכולל נתונים על יכולות החקירה הדיגיטלית.</div>
+                        <div class="recent-doc-summary">לקט מקיף של נתוני הפשיעה המדווחת בישראל לתקופה 2020-2024, המציג ניתוח של 1,470,780 תיקים פליליים (כ-294,156 תיקים בשנה בממוצע).</div>
                     </div>
                     
                     <div class="view-all-docs">
@@ -733,23 +895,7 @@
                 <div class="bottom-line">
                     <div class="bottom-line-title">📌 עובדות מרכזיות</div>
                     <div class="bottom-line-text">
-                        בין 2021-2024 נרשמו 840 אירועי רצח עם 903 קורבנות. 75% מאירועי הרצח התרחשו בחברה הערבית, 19% בחברה היהודית ו-6% בקטגוריית "אחר". שיעור הפענוח: 65% באוכלוסייה היהודית לעומת 20% באוכלוסייה הערבית. שנת 2023 רשמה 274 אירועים, עם עלייה של 104% באירועי רצח בחברה הערבית (מ-103 ל-210).
-                    </div>
-                </div>
-
-                <div class="key-findings">
-                    <div class="findings-title">ממצאים עיקריים מהתוצרים</div>
-                    <div class="finding-item">
-                        <span class="finding-bullet">◈</span> 75% מאירועי הרצח ב-2021-2024 התרחשו בחברה הערבית
-                    </div>
-                    <div class="finding-item">
-                        <span class="finding-bullet">◈</span> פער בשיעורי פענוח: יהודים 65%, ערבים 20%
-                    </div>
-                    <div class="finding-item">
-                        <span class="finding-bullet">◈</span> 8 אירועי רצח לכל 100,000 תושבים ערבים לעומת 1 ליהודים
-                    </div>
-                    <div class="finding-item">
-                        <span class="finding-bullet">◈</span> מחוז מרכז: 16 אירועי רצח לכל 100,000 ערבים, מחוז חוף: 12
+                        בין 2021-2024 נרשמו 840 אירועי רצח עם 903 קורבנות. 75% מאירועי הרצח התרחשו בחברה הערבית, 19% בחברה היהודית ו-6% בקטגוריית "אחר". שיעור הפענוח: 65% באוכלוסייה היהודית לעומת 20% באוכלוסייה הערבית.
                     </div>
                 </div>
 
@@ -763,30 +909,41 @@
                     <div class="recent-docs-title">📋 תוצרים אחרונים בתחום</div>
                     
                     <div class="recent-doc-item">
-                        <a href="documents/murder-report-q4-2024.pdf" class="recent-doc-title">דוח אירועי רצח - רבעון רביעי 2024</a>
+                        <a href="https://rami890.github.io/murder_dashboard_2025/" target="_blank" class="recent-doc-title">דשבורד נתוני רצח - תצוגה אינטראקטיבית</a>
                         <div class="recent-doc-meta">
-                            <span class="recent-doc-date">18 בינואר 2025</span>
-                            <span class="recent-doc-author">רמי שוורץ</span>
+                            <span class="recent-doc-date">20 בינואר 2025</span>
+                            <span class="recent-doc-author">
+                                <span class="researcher-name">
+                                    רמי שוורץ
+                                    <div class="researcher-popup">
+                                        <div class="popup-header">
+                                            <div class="popup-name">רמי שוורץ</div>
+                                            <div class="popup-title">חוקר - קרימינולוגיה ונתוני פשיעה</div>
+                                        </div>
+                                        <div class="popup-contact">
+                                            <div class="contact-item">
+                                                <span class="contact-icon">📧</span>
+                                                <a href="mailto:rami.schwartz@knesset.gov.il" class="contact-link">rami.schwartz@knesset.gov.il</a>
+                                            </div>
+                                            <div class="contact-item">
+                                                <span class="contact-icon">📞</span>
+                                                <a href="tel:+97226408445" class="contact-link">02-6408445</a>
+                                            </div>
+                                            <div class="contact-item">
+                                                <span class="contact-icon">🏢</span>
+                                                <span>משרד 3.248, בניין הכנסת</span>
+                                            </div>
+                                        </div>
+                                        <div class="expertise-tags">
+                                            <span class="expertise-tag">נתוני פשיעה</span>
+                                            <span class="expertise-tag">אירועי רצח</span>
+                                            <span class="expertise-tag">ויזואליזציה</span>
+                                        </div>
+                                    </div>
+                                </span>
+                            </span>
                         </div>
-                        <div class="recent-doc-summary">ניתוח 244 אירועי הרצח ב-2024 ומגמות הפענוח לפי קבוצות אוכלוסייה. התוצר מציג את הפערים המשמעותיים בשיעורי הפענוח ואת הריכוז הגיאוגרפי של האירועים במחוזות שונים.</div>
-                    </div>
-                    
-                    <div class="recent-doc-item">
-                        <a href="documents/investigation-gaps-update.pdf" class="recent-doc-title">פערי פענוח בין מחוזות - עדכון 2024</a>
-                        <div class="recent-doc-meta">
-                            <span class="recent-doc-date">10 בינואר 2025</span>
-                            <span class="recent-doc-author">ד"ר נורית יכימוביץ-כהן</span>
-                        </div>
-                        <div class="recent-doc-summary">בחינת הפערים בשיעורי הפענוח בין המחוזות השונים: מחוז צפון 78% ליהודים לעומת 12% לערבים. התוצר מנתח את הגורמים המבניים והמשאבים הזמינים לכל מחוז.</div>
-                    </div>
-                    
-                    <div class="recent-doc-item">
-                        <a href="documents/arab-society-murders-trends.pdf" class="recent-doc-title">רציחות בחברה הערבית - מגמות וניתוח 2024</a>
-                        <div class="recent-doc-meta">
-                            <span class="recent-doc-date">3 בינואר 2025</span>
-                            <span class="recent-doc-author">עדו אבגר</span>
-                        </div>
-                        <div class="recent-doc-summary">ניתוח מקיף של 206 אירועי הרצח בחברה הערבית ב-2024 והשוואה לשנים קודמות. התוצר בוחן את הקשר בין מאפיינים חברתיים-כלכליים לדפוסי הרצח ושיעורי הפענוח.</div>
+                        <div class="recent-doc-summary">דשבורד אינטראקטיבי המציג נתוני רצח בזמן אמת עם אפשרויות סינון לפי מחוזות, קבוצות אוכלוסייה ותקופות זמן.</div>
                     </div>
                     
                     <div class="view-all-docs">
@@ -855,7 +1012,7 @@
 
     <footer class="footer">
         <div class="container">
-            <p>מרכז המחקר והמידע של הכנסת | <a href="https://www.knesset.gov.il/mmm">www.knesset.gov.il/mmm</a></p>
+            <p>מרכז המחקר והמידע של הכנסת | <a href="https://www.knesset.gov.il/mmm" target="_blank">www.knesset.gov.il/mmm</a></p>
             <p style="font-size: 12px; margin-top: 10px;">כל הנתונים והסיכומים מבוססים על תוצרים רשמיים של הממ"מ</p>
         </div>
     </footer>
@@ -864,16 +1021,18 @@
         let charts = {};
 
         function showSearchResults() {
-            document.getElementById('searchResults').style.display = 'block';
+            const leftResults = document.getElementById('searchResultsLeft');
+            if (leftResults) leftResults.style.display = 'block';
         }
 
         function hideSearchResults() {
-            document.getElementById('searchResults').style.display = 'none';
+            const leftResults = document.getElementById('searchResultsLeft');
+            if (leftResults) leftResults.style.display = 'none';
         }
 
         function performSearch(event) {
             const searchTerm = event.target.value.toLowerCase();
-            const resultsContainer = document.getElementById('searchResults');
+            const resultsContainer = event.target.parentElement.querySelector('.search-results');
             
             if (searchTerm.length < 2) {
                 resultsContainer.innerHTML = `
@@ -895,7 +1054,6 @@
 
             const searchResults = [];
             
-            // חיפוש בנושאים עם תוכן בלבד
             const topics = {
                 'police': { title: 'כוח אדם במשטרה', keywords: ['שוטר', 'מצבה', 'גיוס', 'איוש', 'תקן', 'סיור', 'קבע', 'חובה'] },
                 'crime': { title: 'פשיעה מדווחת', keywords: ['פשע', 'עבירה', 'דיווח', 'משטרה', 'תיק', 'מקוון', 'סדר ציבורי'] },
@@ -926,26 +1084,20 @@
         }
 
         function showSection(sectionId) {
-            // Hide all sections
             document.querySelectorAll('.section').forEach(sec => {
                 sec.classList.remove('active');
             });
             
-            // Remove active class from all tabs
             document.querySelectorAll('.tab').forEach(tab => {
                 tab.classList.remove('active');
             });
             
-            // Show selected section
             document.getElementById(sectionId).classList.add('active');
             
-            // Add active class to clicked tab
             document.querySelector(`button[onclick="showSection('${sectionId}')"]`).classList.add('active');
             
-            // Hide search results
             hideSearchResults();
             
-            // Initialize chart for the section if needed (only for sections with content)
             if (['police', 'crime', 'murder'].includes(sectionId)) {
                 setTimeout(() => {
                     initializeChart(sectionId);
@@ -982,14 +1134,6 @@
                         interaction: {
                             mode: 'index',
                             intersect: false
-                        },
-                        plugins: {
-                            tooltip: {
-                                backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                                padding: 12,
-                                titleFont: { size: 14 },
-                                bodyFont: { size: 13 }
-                            }
                         }
                     }
                 },
@@ -1004,36 +1148,12 @@
                             backgroundColor: '#0038b8',
                             borderColor: '#002d8f',
                             borderWidth: 1
-                        }, {
-                            label: 'שיעור דיווח (%)',
-                            data: [32, 29, 27, 25.6, 24],
-                            type: 'line',
-                            borderColor: '#dc3545',
-                            backgroundColor: 'transparent',
-                            yAxisID: 'y1',
-                            borderWidth: 2,
-                            pointRadius: 5
                         }]
                     },
                     options: {
                         interaction: {
                             mode: 'index',
                             intersect: false
-                        },
-                        scales: {
-                            y: {
-                                type: 'linear',
-                                display: true,
-                                position: 'left',
-                                title: { display: true, text: 'תיקים (אלפים)' }
-                            },
-                            y1: {
-                                type: 'linear',
-                                display: true,
-                                position: 'right',
-                                title: { display: true, text: 'שיעור דיווח (%)' },
-                                grid: { drawOnChartArea: false }
-                            }
                         }
                     }
                 },
@@ -1066,43 +1186,6 @@
                         interaction: {
                             mode: 'index',
                             intersect: false
-                        },
-                        plugins: {
-                            tooltip: {
-                                callbacks: {
-                                    afterLabel: function(context) {
-                                        if (context.datasetIndex === 0) { // יהודים
-                                            const pData = {
-                                                '2021': 'שיעור פענוח: 78%',
-                                                '2022': 'שיעור פענוח: 72%',
-                                                '2023': 'שיעור פענוח: 66%',
-                                                '2024': 'שיעור פענוח: 50%'
-                                            };
-                                            return pData[context.label] || '';
-                                        } else if (context.datasetIndex === 1) { // ערבים
-                                            const pData = {
-                                                '2021': 'שיעור פענוח: 30%',
-                                                '2022': 'שיעור פענוח: 23%',
-                                                '2023': 'שיעור פענוח: 16%',
-                                                '2024': 'שיעור פענוח: 18%'
-                                            };
-                                            return pData[context.label] || '';
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        scales: {
-                            x: {
-                                stacked: false
-                            },
-                            y: {
-                                beginAtZero: true,
-                                title: {
-                                    display: true,
-                                    text: 'מספר אירועים'
-                                }
-                            }
                         }
                     }
                 }
@@ -1114,23 +1197,16 @@
             const canvas = document.getElementById(config.id);
             if (!canvas) return;
 
-            // Destroy existing chart if exists
             if (charts[config.id]) {
                 charts[config.id].destroy();
             }
 
-            // Create new chart with interactive features
             charts[config.id] = new Chart(canvas, {
                 type: config.type,
                 data: config.data,
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    interaction: {
-                        mode: 'nearest',
-                        axis: 'x',
-                        intersect: false
-                    },
                     plugins: {
                         legend: {
                             position: 'bottom',
@@ -1141,23 +1217,9 @@
                                 },
                                 padding: 20
                             }
-                        },
-                        tooltip: {
-                            enabled: true,
-                            backgroundColor: 'rgba(0, 0, 0, 0.85)',
-                            padding: 15,
-                            titleFont: {
-                                size: 14,
-                                weight: 'bold'
-                            },
-                            bodyFont: {
-                                size: 13
-                            },
-                            displayColors: true,
-                            callbacks: config.options?.plugins?.tooltip?.callbacks || {}
                         }
                     },
-                    scales: config.options?.scales || (config.type !== 'doughnut' && config.type !== 'pie' ? {
+                    scales: config.type !== 'doughnut' && config.type !== 'pie' ? {
                         y: {
                             beginAtZero: true,
                             ticks: {
@@ -1165,9 +1227,6 @@
                                     family: 'Arial',
                                     size: 11
                                 }
-                            },
-                            grid: {
-                                color: 'rgba(0, 0, 0, 0.05)'
                             }
                         },
                         x: {
@@ -1176,18 +1235,14 @@
                                     family: 'Arial',
                                     size: 11
                                 }
-                            },
-                            grid: {
-                                display: false
                             }
                         }
-                    } : undefined),
+                    } : undefined,
                     ...config.options
                 }
             });
         }
 
-        // Initialize first chart on load
         window.addEventListener('load', () => {
             initializeChart('police');
         });
